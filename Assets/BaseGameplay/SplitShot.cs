@@ -5,7 +5,7 @@ using Assets;
 
 [RequireComponent(typeof(RigidbodyController))]
 public class SplitShot : MonoBehaviour {
-	public float splitAngle;
+	public float splitAngle = 30;
 	protected RigidbodyController controller;
 
 	protected Player player;
@@ -18,7 +18,7 @@ public class SplitShot : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if (player.Device.Action1.WasPressed && controller.HasBook())
+		if (player.Device.Action4.WasPressed && controller.HasBook())
 		{
 			Debug.Log("Triple shot attempt: ");
 
@@ -26,9 +26,11 @@ public class SplitShot : MonoBehaviour {
 			directions [0] = player.Device.LeftStick;
 			directions [1] = Quaternion.Euler(0,0,splitAngle) * player.Device.LeftStick;
 			directions [2] = Quaternion.Euler(0,0,-splitAngle) * player.Device.LeftStick;
+			Debug.Log (directions.Length);
 			for (int i = 0; i < 3; i++) {
-				
-				Debug.Log (directions[i]);
+				Debug.Log (directions [i].x);
+				Debug.Log (directions [i].y);
+				Debug.Log (directions [i].z);
 			}
 			controller.currentBook.Throw (controller.transform.position, false, directions);
 			controller.currentBook = null;
