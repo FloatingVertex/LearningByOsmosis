@@ -50,11 +50,19 @@ public class BookBehavior : MonoBehaviour
             case BookState.Held:
                 break;
             case BookState.Thrown:
-                if (character != null && character.gameObject != _heldBy)
+                if (character != null)
                 {
-                    character.HitByBook(this);
+                    if (character.gameObject != _heldBy)
+                    {
+                        character.HitByBook(this);
+                        Destroy(gameObject);
+                    }
                 }
                 else
+                {
+                    Destroy(gameObject);
+                }
+                if (transform.position.magnitude > 20)
                 {
                     Destroy(gameObject);
                 }
