@@ -34,7 +34,12 @@ public class SplitShot : MonoBehaviour {
 			}
 			if (controller.hold) {
 				controller.currentBook.Throw (controller.transform.position, true, directions);
-			    controller.hold = false;			} else {
+<<<<<<< HEAD
+				controller.hold = false;
+=======
+			    controller.hold = false;
+>>>>>>> 4fd2becf0ef494fbac5955f0610c89ce3dcd07d6
+			} else {
 				controller.currentBook.Throw (controller.transform.position, false, directions);
 
 			}
