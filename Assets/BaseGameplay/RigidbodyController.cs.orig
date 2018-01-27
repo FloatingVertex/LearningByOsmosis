@@ -11,7 +11,12 @@ public class RigidbodyController : MonoBehaviour {
 	int lifes;
 
 	public bool repeatShot;
-	public bool hold;	public bool splitShotOff;
+<<<<<<< HEAD
+	public bool hold;
+=======
+    public bool hold;
+>>>>>>> 4fd2becf0ef494fbac5955f0610c89ce3dcd07d6
+	public bool splitShotOff;
 
     public Player player;
 
@@ -72,10 +77,18 @@ public class RigidbodyController : MonoBehaviour {
     public void GetBook(BookBehavior bookBehavior)
     {
         currentBook = bookBehavior;
+<<<<<<< HEAD
+		if (repeatShot) {
+			hold = true;
+		}
+		else {
+=======
 		if (repeatShot)
 		{
 		    hold = true;
-		} else {			hold = false;
+		} else {
+>>>>>>> 4fd2becf0ef494fbac5955f0610c89ce3dcd07d6
+			hold = false;
 		}
         // May want to move the book to the hand position, once we get art and know where that is
     }
