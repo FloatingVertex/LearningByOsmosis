@@ -103,6 +103,11 @@ public class RigidbodyController : MonoBehaviour {
             case BookBehavior.KnowledgeType.Physics:
                 GetComponent<DashAbility>().enabled = true;
                 break;
+            case BookBehavior.KnowledgeType.Literature:
+                break;
+            case BookBehavior.KnowledgeType.Math:
+                splitShotOff = false;
+                break;
         }
         //adds it to the affected array
         player.SetEffect(kt);
@@ -113,7 +118,7 @@ public class RigidbodyController : MonoBehaviour {
             //TO DO kills player
             Destroy(gameObject);
 		}
-	}
+    }
 
     private void OnDestroy()
     {
