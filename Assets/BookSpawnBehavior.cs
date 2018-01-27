@@ -22,7 +22,14 @@ public class BookSpawnBehavior : MonoBehaviour
 	    if (_books.Count(b => b.State == BookBehavior.BookState.Grounded) < 2)
 	    {
 	        //Spawn a book!
-	        var bookBehavior = Instantiate(BookPrefab, new Vector3(Random.value * 16 - 8, Random.value * 9 - 4.5f, 0),
+	        Vector3 randomPosition = new Vector3(Random.value * 16 - 8, Random.value * 9 - 4.5f, 0);
+	        Collider2D[] colliders = Physics2D.OverlapCircleAll(randomPosition, 1f);
+	        while (colliders.Length > 0)
+	        {
+	            randomPosition = new Vector3(Random.value * 16 - 8, Random.value * 9 - 4.5f, 0);
+	            colliders = Physics2D.OverlapCircleAll(randomPosition, 1f);
+	        }
+            var bookBehavior = Instantiate(BookPrefab, randomPosition,
 	            Quaternion.identity).GetComponent<BookBehavior>();
 	        bookBehavior.Kind = (BookBehavior.KnowledgeType) Random.Range(0, 6);
             _books.Add(bookBehavior);
