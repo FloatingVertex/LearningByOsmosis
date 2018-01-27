@@ -4,7 +4,8 @@ using UnityEngine;
 using Assets;
 
 [RequireComponent(typeof(RigidbodyController))]
-public class DashAbility : MonoBehaviour {
+public class DashAbility : CooldownAbility
+{
     public float dashForce = 1000f;
 
     protected RigidbodyController controller;
@@ -15,9 +16,10 @@ public class DashAbility : MonoBehaviour {
         player = controller.player;
     }
 
-    private void FixedUpdate()
+    private void Update()
     {
-        if (player.Device.Action1.WasPressed)
+        CooldownUpdate();
+        if (player.Device.Action1.WasPressed && TryToUseAbility())
         {
             Debug.Log("Dash used by "+ player.Color);
             controller.Move(player.Device.LeftStickX, player.Device.LeftStickY,1f, dashForce);
