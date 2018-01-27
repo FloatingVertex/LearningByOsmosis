@@ -44,18 +44,42 @@ public class CharacterController2D : MonoBehaviour {
             movement = movement.normalized;
         }
 
-        RaycastHit2D raycastHit = Physics2D.CircleCast(feet.position,feetRadius,movement,movementSpeed*movement.magnitude* deltaTime, movementMask);
+        var contactMask = new ContactFilter2D();
+        RaycastHit2D[] raycastHits = new RaycastHit2D[100];
+        contactMask.layerMask = movementMask;
+        int numberOfHits = Physics2D.CircleCast(feet.position, feetRadius, movement, contactMask,raycastHits, movementSpeed * movement.magnitude * deltaTime);
 
-        //if raycasty hit something
-        if(raycastHit.collider)
+        Vector2 initialPosition = new Vector2(feet.position.x, feet.position.y);
+        bool hitSomething = false;
+        for(int i = 0; i < numberOfHits; i++)
         {
-            transform.position = (Vector3)raycastHit.centroid + (transform.position - feet.position);
+            if(raycastHits[i].centroid != initialPosition)
+            {
+                Debug.Log("Blocked");
+                var newPosition = (Vector3)raycastHits[i].centroid + (transform.position - feet.position);
+                newPosition.z = transform.position.z;
+                newPosition += (newPosition - transform.position).normalized * -0.1f;
+                transform.position = newPosition;
+                hitSomething = true;
+                break;
+            }
         }
-        else
+        if (!hitSomething)
         {
-            
             transform.position = transform.position + ((Vector3)movement * (movementSpeed * deltaTime));
         }
+
+        //RaycastHit2D raycastHit = Physics2D.CircleCast(feet.position, feetRadius, movement, movementSpeed * movement.magnitude * deltaTime, movementMask);
+
+        //if raycasty hit something
+        //if (raycastHit.collider)
+        //{
+        //    transform.position = (Vector3)raycastHit.centroid + (transform.position - feet.position);
+        //}
+        //else
+        //{
+        //    transform.position = transform.position + ((Vector3)movement * (movementSpeed * deltaTime));
+        //}
     }
 
     // Update is called once per frame
