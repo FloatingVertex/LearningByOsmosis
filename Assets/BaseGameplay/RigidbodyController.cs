@@ -1,21 +1,12 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Assets;
 
 public class RigidbodyController : MonoBehaviour {
-
-    // controlling player
-    [Range(0, 3)] public int playerIndex = 0;
+    public Player player;
 
     public float movementSpeed = 1f;
-
-    // match to how the input manager is setup
-    [SerializeField]
-    protected string[] walkingXAxisList;
-    [SerializeField]
-    protected string[] walkingYAxisList;
-    [SerializeField]
-    protected string[] ability1Button;
 
     // Use this for initialization
     void Start()
@@ -25,7 +16,7 @@ public class RigidbodyController : MonoBehaviour {
 
     private void FixedUpdate()
     {
-        Move(Input.GetAxis(walkingXAxisList[playerIndex]), Input.GetAxis(walkingYAxisList[playerIndex]), Time.fixedDeltaTime);
+        Move(player.Device.LeftStickX, player.Device.LeftStickY, Time.fixedDeltaTime);
     }
 
     /// <summary>
