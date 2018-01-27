@@ -242,7 +242,7 @@ MonoBehaviour:
     m_SelectOnRight: {fileID: 0}
   m_Transition: 1
   m_Colors:
-    m_NormalColor: {r: 0.39705884, g: 0.39705884, b: 0.39705884, a: 1}
+    m_NormalColor: {r: 0.972549, g: 0.9764706, b: 0.53333336, a: 1}
     m_HighlightedColor: {r: 0.9717918, g: 0.97794116, b: 0.53211504, a: 1}
     m_PressedColor: {r: 1, g: 0, b: 0, a: 1}
     m_DisabledColor: {r: 0.8208567, g: 0.8602941, b: 0.1454909, a: 0.5019608}
@@ -257,7 +257,7 @@ MonoBehaviour:
     m_HighlightedTrigger: Highlighted
     m_PressedTrigger: Pressed
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 105974149}
   m_OnClick:
     m_PersistentCalls:
@@ -375,7 +375,7 @@ MonoBehaviour:
     m_SelectOnRight: {fileID: 0}
   m_Transition: 1
   m_Colors:
-    m_NormalColor: {r: 0.39705884, g: 0.39705884, b: 0.39705884, a: 1}
+    m_NormalColor: {r: 0.20392157, g: 0.31764707, b: 0.7372549, a: 1}
     m_HighlightedColor: {r: 0.20544985, g: 0.31872687, b: 0.7352941, a: 1}
     m_PressedColor: {r: 0.875, g: 0.109375, b: 0.109375, a: 1}
     m_DisabledColor: {r: 0.1081315, g: 0.112456724, b: 0.7352941, a: 0.5019608}
@@ -390,7 +390,7 @@ MonoBehaviour:
     m_HighlightedTrigger: Highlighted
     m_PressedTrigger: Pressed
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 240213063}
   m_OnClick:
     m_PersistentCalls:
@@ -670,8 +670,8 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 934748622}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 456.5, y: 264, z: 0}
-  m_LocalScale: {x: 1.14125, y: 1.14125, z: 1.14125}
+  m_LocalPosition: {x: 219, y: 123, z: 0}
+  m_LocalScale: {x: 0.5475, y: 0.5475, z: 0.5475}
   m_Children:
   - {fileID: 240213061}
   - {fileID: 1827935694}
@@ -697,6 +697,7 @@ GameObject:
   - component: {fileID: 1161359236}
   - component: {fileID: 1161359235}
   - component: {fileID: 1161359234}
+  - component: {fileID: 1161359238}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -766,6 +767,23 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1161359238
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1161359233}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 27fb9d2984c08184a838d0f8b6c8c9e0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Buttons:
+  - {fileID: 1827935695}
+  - {fileID: 1411862834}
+  - {fileID: 240213062}
+  - {fileID: 105974148}
+  TimerText: {fileID: 1933698912}
 --- !u!1 &1411862832
 GameObject:
   m_ObjectHideFlags: 0
@@ -822,7 +840,7 @@ MonoBehaviour:
     m_SelectOnRight: {fileID: 0}
   m_Transition: 1
   m_Colors:
-    m_NormalColor: {r: 0.39705884, g: 0.39705884, b: 0.39705884, a: 1}
+    m_NormalColor: {r: 0.4509804, g: 0.88235295, b: 0.43529412, a: 1}
     m_HighlightedColor: {r: 0.45012528, g: 0.88235295, b: 0.43468854, a: 1}
     m_PressedColor: {r: 1, g: 0, b: 0, a: 1}
     m_DisabledColor: {r: 0.35358995, g: 0.8014706, b: 0.35667878, a: 0.5019608}
@@ -837,7 +855,7 @@ MonoBehaviour:
     m_HighlightedTrigger: Highlighted
     m_PressedTrigger: Pressed
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 1411862835}
   m_OnClick:
     m_PersistentCalls:
@@ -1103,7 +1121,7 @@ MonoBehaviour:
     m_SelectOnRight: {fileID: 0}
   m_Transition: 1
   m_Colors:
-    m_NormalColor: {r: 0.39705884, g: 0.39705884, b: 0.39705884, a: 1}
+    m_NormalColor: {r: 0.84705883, g: 0.40392157, b: 0.40392157, a: 1}
     m_HighlightedColor: {r: 0.8455882, g: 0.4041414, b: 0.4041414, a: 1}
     m_PressedColor: {r: 1, g: 0, b: 0, a: 1}
     m_DisabledColor: {r: 0.89705884, g: 0.15170847, b: 0.15170847, a: 0.5019608}
@@ -1118,7 +1136,7 @@ MonoBehaviour:
     m_HighlightedTrigger: Highlighted
     m_PressedTrigger: Pressed
     m_DisabledTrigger: Disabled
-  m_Interactable: 1
+  m_Interactable: 0
   m_TargetGraphic: {fileID: 1827935696}
   m_OnClick:
     m_PersistentCalls:
@@ -1261,16 +1279,16 @@ RectTransform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1933698910}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 204, y: 72, z: 0}
-  m_LocalScale: {x: 6.8149447, y: 7.1736984, z: 7.1736984}
+  m_LocalPosition: {x: 0, y: -0.0000076293945, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 934748626}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 204, y: 72}
-  m_SizeDelta: {x: 160, y: 30}
+  m_AnchoredPosition: {x: 0, y: -0.0000038147}
+  m_SizeDelta: {x: 371.4, y: 144.2}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1933698912
 MonoBehaviour:
@@ -1293,18 +1311,20 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
     m_Font: {fileID: 10102, guid: 0000000000000000e000000000000000, type: 0}
-    m_FontSize: 14
+    m_FontSize: 48
     m_FontStyle: 0
     m_BestFit: 0
-    m_MinSize: 10
-    m_MaxSize: 40
-    m_Alignment: 0
+    m_MinSize: 4
+    m_MaxSize: 48
+    m_Alignment: 4
     m_AlignByGeometry: 0
     m_RichText: 1
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "All Players Ready \n  About To Start!\n"
+  m_Text: 'Waiting for Players...
+
+'
 --- !u!222 &1933698913
 CanvasRenderer:
   m_ObjectHideFlags: 0
