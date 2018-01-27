@@ -6,12 +6,12 @@ using UnityEngine;
 public class BookBehavior : MonoBehaviour
 {
     public float ThrowSpeed;
+    public float Gravity;
+    public float InitialVerticalVelocity;
     public Sprite[] BookSprites;
 
     public Texture[] ParticleTextures;
     public Color[] ParticleColors;
-
-
 
     public enum KnowledgeType
     {
@@ -44,6 +44,8 @@ public class BookBehavior : MonoBehaviour
 
     private Vector3 _throwDirection;
     private KnowledgeType _kind;
+    private float _height;
+    private float _verticalVelocity;
 
     // Use this for initialization
 	void Start ()
@@ -79,18 +81,12 @@ public class BookBehavior : MonoBehaviour
                     if (character.gameObject != _heldBy)
                     {
                         character.HitByBook(this);
-                        GameObject particles = transform.Find("particles").gameObject;
-                        particles.transform.parent = null;
-                        particles.SetActive(true);
-                        Destroy(gameObject);
+                        Explode();
                     }
                 }
                 else if(other.GetComponent<BookBehavior>() == null)
                 {
-                    GameObject particles = transform.Find("particles").gameObject;
-                    particles.transform.parent = null;
-                    particles.SetActive(true);
-                    Destroy(gameObject);
+                    Explode();
                 }
                 if (transform.position.magnitude > 20)
                 {
@@ -100,6 +96,14 @@ public class BookBehavior : MonoBehaviour
             default:
                 throw new ArgumentOutOfRangeException();
         }
+    }
+
+    private void Explode()
+    {
+        GameObject particles = transform.Find("particles").gameObject;
+        particles.transform.parent = null;
+        particles.SetActive(true);
+        Destroy(gameObject);
     }
 
     public void Throw(Vector3 fromPosition, bool keep, params Vector3[] directions)
@@ -118,8 +122,8 @@ public class BookBehavior : MonoBehaviour
             _throwDirection = directions[0].normalized;
             State = BookState.Thrown;
             GetComponent<CircleCollider2D>().enabled = true;
-            GetComponent<CircleCollider2D>().offset = new Vector2(0, -0.7f);
-            transform.Find("shadow").gameObject.SetActive(true);
+            SetHeight(1);
+            _verticalVelocity = InitialVerticalVelocity;
             _heldBy.GetComponent<RigidbodyController>().LoseBook();
             for (int i = 1; i < directions.Length; i++)
             {
@@ -127,9 +131,9 @@ public class BookBehavior : MonoBehaviour
                 extraThrownBookBehavior._throwDirection = directions[i].normalized;
                 extraThrownBookBehavior.State = BookState.Thrown;
                 extraThrownBookBehavior.GetComponent<CircleCollider2D>().enabled = true;
-                extraThrownBookBehavior.GetComponent<CircleCollider2D>().offset = new Vector2(0, -0.7f);
-                extraThrownBookBehavior.transform.Find("shadow").gameObject.SetActive(true);
+                extraThrownBookBehavior.SetHeight(1);
                 extraThrownBookBehavior._heldBy = _heldBy;
+                extraThrownBookBehavior._verticalVelocity = InitialVerticalVelocity;
                 extraThrownBookBehavior.Kind = Kind;
             }
         }
@@ -139,12 +143,26 @@ public class BookBehavior : MonoBehaviour
         }
     }
 
+    private void SetHeight(float height)
+    {
+        transform.Find("shadow").gameObject.SetActive(height > 0);
+        transform.Find("shadow").gameObject.transform.localPosition = new Vector3(-0.02f, -0.4f - 0.4f * height, 1.83f);
+        GetComponent<CircleCollider2D>().offset = new Vector2(0, -0.3f - 0.4f * height);
+        _height = height;
+    }
+
     // Update is called once per frame
     void Update ()
     {
         if (State == BookState.Thrown)
         {
             transform.position += _throwDirection * ThrowSpeed * Time.deltaTime;
+            SetHeight(_height + _verticalVelocity * Time.deltaTime);
+            _verticalVelocity -= Gravity * Time.deltaTime;
+            if (_height <= 0)
+            {
+                Explode();
+            }
         }
-	}
+    }
 }
