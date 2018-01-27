@@ -7,17 +7,27 @@ public class BookBehavior : MonoBehaviour
 {
     public float ThrowSpeed;
 
+    public Sprite[] BookSprites;
+
     public enum KnowledgeType
     {
         Art,
         Language,
         History,
-        Literatuer,
+        Literature,
         Physics,
         Math
     }
 
-    public KnowledgeType Kind { get; set; }
+    public KnowledgeType Kind
+    {
+        get { return _kind; }
+        set
+        {
+            _kind = value;
+            GetComponent<SpriteRenderer>().sprite = BookSprites[(int) value];
+        }
+    }
 
     public enum BookState { Grounded, Held, Thrown}
 
@@ -26,11 +36,11 @@ public class BookBehavior : MonoBehaviour
     private GameObject _heldBy;
 
     private Vector3 _throwDirection;
+    private KnowledgeType _kind;
 
-	// Use this for initialization
+    // Use this for initialization
 	void Start () {
 	    State = BookState.Grounded;
-	    Kind = KnowledgeType.Art;
 	}
 
     void OnTriggerEnter2D(Collider2D other)
@@ -80,6 +90,7 @@ public class BookBehavior : MonoBehaviour
             //transform.position = fromPosition;
             _throwDirection = direction.normalized;
             State = BookState.Thrown;
+            transform.Find("shadow").gameObject.SetActive(true);
             return true;
         }
         return false;
