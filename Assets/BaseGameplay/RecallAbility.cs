@@ -64,6 +64,14 @@ public class RecallAbility : CooldownAbility {
             oldPositions.Dequeue();
         }
 	}
+
+    private void OnDestroy()
+    {
+        if(ghostObject != null)
+        {
+            Destroy(ghostObject);
+        }
+    }
 }
 
 

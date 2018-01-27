@@ -46,8 +46,8 @@ public class BookBehavior : MonoBehaviour
     private KnowledgeType _kind;
 
     // Use this for initialization
-	void Start () {
-	    State = BookState.Grounded;
+	void Start ()
+    {
 	}
 
     void OnTriggerEnter2D(Collider2D other)
@@ -61,6 +61,7 @@ public class BookBehavior : MonoBehaviour
                     State = BookState.Held;
                     _heldBy = other.gameObject;
                     transform.parent = other.transform;
+                    GetComponent<CircleCollider2D>().enabled = false;
                     character.GetBook(this);
                 }
                 break;
@@ -92,18 +93,39 @@ public class BookBehavior : MonoBehaviour
         }
     }
 
-    public bool Throw(Vector3 fromPosition, bool keep, params Vector3[] directions)
+    public void Throw(Vector3 fromPosition, bool keep, params Vector3[] directions)
     {
+        BookBehavior newBookBehavior = null;
+        if (keep)
+        {
+            newBookBehavior = Instantiate(gameObject, transform.parent).GetComponent<BookBehavior>();
+            newBookBehavior.State = BookState.Held;
+            newBookBehavior._heldBy = _heldBy;
+            newBookBehavior.Kind = Kind;
+        }
         if (directions[0].sqrMagnitude > 0)
         {
             transform.parent = null;
-            //transform.position = fromPosition;
             _throwDirection = directions[0].normalized;
             State = BookState.Thrown;
+            GetComponent<CircleCollider2D>().enabled = true;
             transform.Find("shadow").gameObject.SetActive(true);
-            return true;
+            _heldBy.GetComponent<RigidbodyController>().LoseBook();
+            for (int i = 1; i < directions.Length; i++)
+            {
+                BookBehavior extraThrownBookBehavior = Instantiate(gameObject).GetComponent<BookBehavior>();
+                extraThrownBookBehavior._throwDirection = directions[i].normalized;
+                extraThrownBookBehavior.State = BookState.Thrown;
+                extraThrownBookBehavior.GetComponent<CircleCollider2D>().enabled = true;
+                extraThrownBookBehavior.transform.Find("shadow").gameObject.SetActive(true);
+                extraThrownBookBehavior._heldBy = _heldBy;
+                extraThrownBookBehavior.Kind = Kind;
+            }
         }
-        return false;
+        if (keep)
+        {
+            _heldBy.GetComponent<RigidbodyController>().GetBook(newBookBehavior);
+        }
     }
 
     // Update is called once per frame
