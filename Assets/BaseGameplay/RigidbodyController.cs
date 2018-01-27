@@ -10,7 +10,7 @@ public class RigidbodyController : MonoBehaviour {
 	bool[] activeEffects;
 	int lifes;
 
-	bool repeatShot;
+	public bool repeatShot;
 	bool hold;
 	public bool splitShotOff;
 
@@ -26,7 +26,7 @@ public class RigidbodyController : MonoBehaviour {
         numberAlive++;
 		lifes = 6;
 		activeEffects = new bool[6];
-		splitShotOff = false;
+		splitShotOff = true;
 		repeatShot = true;
     }
 
@@ -37,7 +37,6 @@ public class RigidbodyController : MonoBehaviour {
         {
 			if (hold) {
 				currentBook.Throw (transform.position, true, player.Device.LeftStick);
-				hold = false;
 			} else {
 				currentBook.Throw (transform.position, false, player.Device.LeftStick);
 			}
@@ -74,7 +73,12 @@ public class RigidbodyController : MonoBehaviour {
     {
         currentBook = bookBehavior;
 		if (repeatShot) {
-			hold = true;
+			if (hold) {
+				hold = false;
+			}
+			else{
+				hold = true;
+			}
 		} else {
 			hold = false;
 		}
@@ -115,7 +119,8 @@ public class RigidbodyController : MonoBehaviour {
             case BookBehavior.KnowledgeType.Physics:
                 GetComponent<DashAbility>().enabled = true;
                 break;
-            case BookBehavior.KnowledgeType.Literature:
+			case BookBehavior.KnowledgeType.Literature:
+				repeatShot = true;
                 break;
             case BookBehavior.KnowledgeType.Math:
                 splitShotOff = false;
