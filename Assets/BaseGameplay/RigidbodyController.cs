@@ -26,7 +26,7 @@ public class RigidbodyController : MonoBehaviour {
 
     private void FixedUpdate()
     {
-        Move(player.Device.LeftStickX, player.Device.LeftStickY, Time.fixedDeltaTime);
+        Move(player.Device.LeftStickX, player.Device.LeftStickY, Time.fixedDeltaTime, movementSpeed);
         if (player.Device.Action1.WasPressed && currentBook != null)
         {
             if (currentBook.Throw(transform.position, player.Device.LeftStick))
@@ -41,7 +41,7 @@ public class RigidbodyController : MonoBehaviour {
     /// </summary>
     /// <param name="xAxis">range (-1,1) where 1 is 100% of movement speed</param>
     /// <param name="yAxis">range (-1,1) where 1 is 100% of movement speed</param>
-    public void Move(float xAxis, float yAxis, float deltaTime)
+    public void Move(float xAxis, float yAxis, float deltaTime,float movementSpeed)
     {
         //prevent faster diaganal movement
         var movement = new Vector2(xAxis, yAxis);
