@@ -11,7 +11,7 @@ public class RigidbodyController : MonoBehaviour {
 	int lifes;
 
 	public bool repeatShot;
-	bool hold;
+	public bool hold;
 	public bool splitShotOff;
 
     public Player player;
@@ -26,7 +26,7 @@ public class RigidbodyController : MonoBehaviour {
         numberAlive++;
 		lifes = 6;
 		activeEffects = new bool[6];
-		splitShotOff = true;
+		splitShotOff = false;
 		repeatShot = true;
     }
 
@@ -73,13 +73,9 @@ public class RigidbodyController : MonoBehaviour {
     {
         currentBook = bookBehavior;
 		if (repeatShot) {
-			if (hold) {
-				hold = false;
-			}
-			else{
-				hold = true;
-			}
-		} else {
+			hold = true;
+		}
+		else {
 			hold = false;
 		}
         // May want to move the book to the hand position, once we get art and know where that is

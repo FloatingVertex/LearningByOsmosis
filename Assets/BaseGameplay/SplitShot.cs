@@ -32,8 +32,9 @@ public class SplitShot : MonoBehaviour {
 				Debug.Log (directions [i].y);
 				Debug.Log (directions [i].z);
 			}
-			if (controller.repeatShot) {
+			if (controller.hold) {
 				controller.currentBook.Throw (controller.transform.position, true, directions);
+				controller.hold = false;
 			} else {
 				controller.currentBook.Throw (controller.transform.position, false, directions);
 
