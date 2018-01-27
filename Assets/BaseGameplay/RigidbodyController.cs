@@ -4,7 +4,9 @@ using UnityEngine;
 using Assets;
 
 public class RigidbodyController : MonoBehaviour {
-	
+
+    public static int numberAlive = 0;
+
 	bool[] activeEffects;
 	int lifes;
 
@@ -15,11 +17,12 @@ public class RigidbodyController : MonoBehaviour {
 
     public float movementSpeed = 1f;
 
-    private BookBehavior currentBook;
+    public BookBehavior currentBook;
 
     // Use this for initialization
     void Start()
     {
+        numberAlive++;
 		lifes = 6;
 		activeEffects = new bool[6];
     }
@@ -84,11 +87,15 @@ public class RigidbodyController : MonoBehaviour {
 		lifes--;
 		//checks if player gets "killed"
 		if (lifes == 0) {
-			//TO DO kills player
+            //TO DO kills player
+            Destroy(gameObject);
 		}
 	}
 
-
+    private void OnDestroy()
+    {
+        numberAlive--;
+    }
     public void LoseBook()
     {
         currentBook = null;
