@@ -11,11 +11,15 @@ namespace Assets
     {
         private readonly InputDevice _device;
 
+		public bool[] activeEffects;
+
+
         public Player(InputDevice inputDevice, Color color)
         {
             _device = inputDevice;
             Color = color;
             Ready = true;
+			activeEffects = new bool[6];
         }
 
         public InputDevice Device
@@ -28,5 +32,11 @@ namespace Assets
         public bool Ready { get; private set; }
 		
 		//TODO:  Add current book, add hitpoint books, add head size, add powerups, etc.
+		public bool isAffected(BookBehavior.KnowledgeType kt){
+			return activeEffects [(int)kt];
+		}
+		public void SetEffect(BookBehavior.KnowledgeType kt){
+			activeEffects [(int)kt] = true;
+		}
     }
 }
