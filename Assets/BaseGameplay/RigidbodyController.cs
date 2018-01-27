@@ -17,6 +17,8 @@ public class RigidbodyController : MonoBehaviour {
     [SerializeField]
     protected string[] ability1Button;
 
+    private BookBehavior currentBook;
+
     // Use this for initialization
     void Start()
     {
@@ -48,4 +50,24 @@ public class RigidbodyController : MonoBehaviour {
     void Update () {
 		
 	}
+
+    public bool HasBook()
+    {
+        return currentBook != null;
+    }
+
+    public void GetBook(BookBehavior bookBehavior)
+    {
+        currentBook = bookBehavior;
+    }
+
+    public void HitByBook(BookBehavior bookBehavior)
+    {
+        /*TODO:
+         * if(hasn't been hit by this kind yet)
+         * {
+         *  get hit by this kind
+         * }
+         */
+    }
 }
