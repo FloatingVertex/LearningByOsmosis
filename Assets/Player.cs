@@ -3,20 +3,23 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using InControl;
+using UnityEngine;
 
 namespace Assets
 {
-    class Player
+    public class Player
     {
-        public Player(InputDevice inputDevice)
+        public Player(InputDevice inputDevice, Color color)
         {
             Device = inputDevice;
-			Ready = true;
+            Color = color;
+            Ready = true;
         }
 
-        public InputDevice Device { get; set; }
+        public InputDevice Device { get; private set; }
+        public Color Color { get; private set; }
 
-		public bool Ready { get; set; }
+        public bool Ready { get; private set; }
 		
 		//TODO:  Add current book, add hitpoint books, add head size, add powerups, etc.
     }

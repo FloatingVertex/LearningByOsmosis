@@ -12,9 +12,11 @@ public class MainMenuBehavior : MonoBehaviour
 {
     public Button[] Buttons;
     public Text TimerText;
+    public PlayerHolderBehavior PlayerHolder;
 
     private Player[] players;
     private float _countdownTime;
+    private Color[] _colors = {Color.red, Color.green, Color.blue, Color.yellow};
 
 	// Use this for initialization
 	void Start () {
@@ -33,7 +35,7 @@ public class MainMenuBehavior : MonoBehaviour
 	            {
 	                if (players[i] == null)
 	                {
-                        players[i] = new Player(InputManager.Devices[i]);
+                        players[i] = new Player(InputManager.Devices[i], _colors[i]);
 	                    Buttons[i].transform.DOMoveY(Buttons[i].transform.position.y + 10, 1).SetEase(Ease.OutElastic);
 	                    if (_countdownTime < -90 && players.Count(p=>p != null && p.Device.IsAttached) > 1)
 	                    {
@@ -64,6 +66,7 @@ public class MainMenuBehavior : MonoBehaviour
 	    else if(_countdownTime > -90)
 	    {
 	        TimerText.text = "Starting...";
+	        PlayerHolder.Players = players.Where(p => p != null && p.Device.IsAttached).ToList();
             SceneManager.LoadScene("EmptyMap");
 	    }
 	}
