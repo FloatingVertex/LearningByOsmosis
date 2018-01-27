@@ -37,6 +37,7 @@ public class MainMenuBehavior : MonoBehaviour
 	                {
                         players[i] = new Player(InputManager.Devices[i], _colors[i]);
 	                    Buttons[i].transform.DOMoveY(Buttons[i].transform.position.y + 10, 1).SetEase(Ease.OutElastic);
+                        Buttons[i].transform.Find("Text").GetComponent<Text>().text = "Ready";
 	                    if (_countdownTime < -90 && players.Count(p=>p != null && p.Device.IsAttached) > 1)
 	                    {
 	                        _countdownTime = 10;
