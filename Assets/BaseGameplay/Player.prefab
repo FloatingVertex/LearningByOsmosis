@@ -26,6 +26,7 @@ GameObject:
   - component: {fileID: 114467053612861856}
   - component: {fileID: 114296056095732106}
   - component: {fileID: 114581735684262730}
+  - component: {fileID: 114716838213835892}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -107,15 +108,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cooldown: 10
   invisLength: 1
-  componentsToDisable:
-  - {fileID: 212454033700902368}
 --- !u!114 &114467053612861856
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1166799856775902}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 37cb71f90954fcb4f9c190780ac0b2fe, type: 3}
   m_Name: 
@@ -134,6 +133,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   movementSpeed: 1000
+  currentBook: {fileID: 0}
 --- !u!114 &114581735684262730
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -153,6 +153,17 @@ MonoBehaviour:
     m_Bits: 4294967295
   ghostPrefab: {fileID: 1580374289121718, guid: 727b145d09c0ef04a995f31e9dd8c85e,
     type: 2}
+--- !u!114 &114716838213835892
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1166799856775902}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c2dd919ce75ae6a47bd0736e94b1accd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!212 &212454033700902368
 SpriteRenderer:
   m_ObjectHideFlags: 1
