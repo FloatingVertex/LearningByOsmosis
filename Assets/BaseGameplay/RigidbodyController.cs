@@ -29,10 +29,7 @@ public class RigidbodyController : MonoBehaviour {
         Move(player.Device.LeftStickX, player.Device.LeftStickY, Time.fixedDeltaTime, movementSpeed);
         if (player.Device.RightTrigger.WasPressed && currentBook != null)
         {
-            if (currentBook.Throw(transform.position, false, player.Device.LeftStick))
-            {
-                currentBook = null;
-            }
+            currentBook.Throw(transform.position, false, player.Device.LeftStick);
         }
     }
 
@@ -92,4 +89,8 @@ public class RigidbodyController : MonoBehaviour {
 	}
 
 
+    public void LoseBook()
+    {
+        currentBook = null;
+    }
 }
