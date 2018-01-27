@@ -98,7 +98,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5676586f9628f3c4081c2d623d5ec2d9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ThrowSpeed: 8
+  ThrowSpeed: 13
   BookSprites:
   - {fileID: 21300000, guid: 66732b699542750489a73975d71399f0, type: 3}
   - {fileID: 21300000, guid: 7cb3757939e33f54783f5b1f07ef293a, type: 3}
