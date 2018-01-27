@@ -85,7 +85,9 @@ public class RigidbodyController : MonoBehaviour {
 			AddEffect (adding);
 		}
     }
-	private void AddEffect(BookBehavior.KnowledgeType kt){
+	private void AddEffect(BookBehavior.KnowledgeType kt)
+	{
+	    PlayerHolderBehavior.singleton.RegisterHit(kt);
         //TO DO: change players properties
         switch (kt)
         {

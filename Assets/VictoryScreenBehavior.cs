@@ -10,11 +10,14 @@ public class VictoryScreenBehavior : MonoBehaviour
 	void Start ()
 	{
 	    _countdownTimer = 5;
+	    BookBehavior.KnowledgeType qouteCategory = PlayerHolderBehavior.singleton.LastHit;
+        //TODO: Load up a quote
 	}
 	
 	// Update is called once per frame
 	void Update ()
 	{
+        //TODO: Wait until the quote is done
 	    _countdownTimer -= Time.deltaTime;
 	    if (_countdownTimer < 0)
 	    {
