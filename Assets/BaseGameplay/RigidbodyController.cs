@@ -15,7 +15,7 @@ public class RigidbodyController : MonoBehaviour {
 
     public float movementSpeed = 1f;
 
-    private BookBehavior currentBook;
+    public BookBehavior currentBook;
 
     // Use this for initialization
     void Start()
@@ -27,7 +27,7 @@ public class RigidbodyController : MonoBehaviour {
     private void FixedUpdate()
     {
         Move(player.Device.LeftStickX, player.Device.LeftStickY, Time.fixedDeltaTime, movementSpeed);
-        if (player.Device.RightTrigger.WasPressed && currentBook != null)
+		if (player.Device.RightTrigger.WasPressed && HasBook())
         {
             if (currentBook.Throw(transform.position, false, player.Device.LeftStick))
             {
