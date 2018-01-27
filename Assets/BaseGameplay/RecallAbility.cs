@@ -40,6 +40,7 @@ public class RecallAbility : CooldownAbility {
                     transform.position = position;
                     oldPositions = new Queue<Vector3>();
                     abilityUsed = true;
+                    ghostObject.SetActive(false);
                     break;
                 }
             }
@@ -48,7 +49,11 @@ public class RecallAbility : CooldownAbility {
                 abilityAvalibleToUse = true;
             }
         }
-        ghostObject.transform.position = oldPositions.Peek();
+        if (oldPositions.Count > (tracebackTime / Time.fixedDeltaTime) / 2 && abilityAvalibleToUse)
+        {
+            ghostObject.transform.position = oldPositions.Peek();
+            ghostObject.SetActive(true);
+        }
     }
 
     // Update is called once per frame
