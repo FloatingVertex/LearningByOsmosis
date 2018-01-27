@@ -9,7 +9,6 @@ public class BookBehavior : MonoBehaviour
 
     public Sprite[] BookSprites;
 
-    public Material ParticleMaterial;
     public Texture[] ParticleTextures;
     public Color[] ParticleColors;
 
@@ -30,7 +29,7 @@ public class BookBehavior : MonoBehaviour
         {
             _kind = value;
             GetComponent<SpriteRenderer>().sprite = BookSprites[(int) value];
-            ParticleMaterial.mainTexture = ParticleTextures[(int) value];
+            transform.Find("particles").GetComponent<Renderer>().material.mainTexture = ParticleTextures[(int) value];
             ParticleSystem.MainModule main = transform.Find("particles").GetComponent<ParticleSystem>().main;
             main.startColor = ParticleColors[(int) value];
         }
@@ -79,8 +78,11 @@ public class BookBehavior : MonoBehaviour
                         Destroy(gameObject);
                     }
                 }
-                else
+                else if(other.GetComponent<BookBehavior>() == null)
                 {
+                    GameObject particles = transform.Find("particles").gameObject;
+                    particles.transform.parent = null;
+                    particles.SetActive(true);
                     Destroy(gameObject);
                 }
                 if (transform.position.magnitude > 20)
