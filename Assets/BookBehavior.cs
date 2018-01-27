@@ -9,6 +9,10 @@ public class BookBehavior : MonoBehaviour
 
     public Sprite[] BookSprites;
 
+    public Material ParticleMaterial;
+    public Texture[] ParticleTextures;
+    public Color[] ParticleColors;
+
     public enum KnowledgeType
     {
         Art,
@@ -26,6 +30,9 @@ public class BookBehavior : MonoBehaviour
         {
             _kind = value;
             GetComponent<SpriteRenderer>().sprite = BookSprites[(int) value];
+            ParticleMaterial.mainTexture = ParticleTextures[(int) value];
+            ParticleSystem.MainModule main = transform.Find("particles").GetComponent<ParticleSystem>().main;
+            main.startColor = ParticleColors[(int) value];
         }
     }
 
@@ -65,6 +72,9 @@ public class BookBehavior : MonoBehaviour
                     if (character.gameObject != _heldBy)
                     {
                         character.HitByBook(this);
+                        GameObject particles = transform.Find("particles").gameObject;
+                        particles.transform.parent = null;
+                        particles.SetActive(true);
                         Destroy(gameObject);
                     }
                 }
