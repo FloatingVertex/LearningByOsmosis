@@ -30,7 +30,7 @@ public class RigidbodyController : MonoBehaviour {
     private void FixedUpdate()
     {
         Move(player.Device.LeftStickX, player.Device.LeftStickY, Time.fixedDeltaTime, movementSpeed);
-        if (player.Device.RightTrigger.WasPressed && currentBook != null)
+		if (player.Device.RightTrigger.WasPressed && HasBook())
         {
             currentBook.Throw(transform.position, false, player.Device.LeftStick);
         }
@@ -80,9 +80,24 @@ public class RigidbodyController : MonoBehaviour {
 		}
     }
 	private void AddEffect(BookBehavior.KnowledgeType kt){
-		//TO DO: change players properties
-		//adds it to the affected array
-		player.SetEffect(kt);
+        //TO DO: change players properties
+        switch (kt)
+        {
+            case BookBehavior.KnowledgeType.Art:
+                GetComponent<InvisibilityAbility>().enabled = true;
+                break;
+            case BookBehavior.KnowledgeType.History:
+                GetComponent<RecallAbility>().enabled = true;
+                break;
+            case BookBehavior.KnowledgeType.Language:
+                GetComponent<ChangeBookAbility>().enabled = true;
+                break;
+            case BookBehavior.KnowledgeType.Physics:
+                GetComponent<DashAbility>().enabled = true;
+                break;
+        }
+        //adds it to the affected array
+        player.SetEffect(kt);
 		activeEffects [(int)kt] = true;
 		lifes--;
 		//checks if player gets "killed"
