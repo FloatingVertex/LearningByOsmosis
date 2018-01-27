@@ -7,7 +7,6 @@ public class InvisibilityAbility : CooldownAbility
 {
 
     public float invisLength = 1.0f;
-    public Renderer[] componentsToDisable;
 
     protected RigidbodyController controller;
     protected Player player;
@@ -33,7 +32,8 @@ public class InvisibilityAbility : CooldownAbility
             {
                 invisibilityTimer = 0.0f;
                 isVisible = true;
-                foreach(Renderer c in componentsToDisable)
+                var componentsToDisable = GetComponentsInChildren<Renderer>();
+                foreach (Renderer c in componentsToDisable)
                 {
                     c.enabled = true;
                 }
@@ -44,7 +44,8 @@ public class InvisibilityAbility : CooldownAbility
         if (player.Device.Action2.WasPressed && TryToUseAbility())
         {
             Debug.Log("Invisibility used by " + player.Color);
-            foreach(Renderer c in componentsToDisable)
+            var componentsToDisable = GetComponentsInChildren<Renderer>();
+            foreach (Renderer c in componentsToDisable)
             {
                 c.enabled = false;
             }
