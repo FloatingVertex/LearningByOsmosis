@@ -138,7 +138,7 @@ CircleCollider2D:
   m_UsedByComposite: 0
   m_Offset: {x: 0, y: 0}
   serializedVersion: 2
-  m_Radius: 0.8
+  m_Radius: 0.7
 --- !u!114 &114560036768832750
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -158,7 +158,6 @@ MonoBehaviour:
   - {fileID: 21300000, guid: d575dbc3a966e244f95d6fbd4e5a7dc6, type: 3}
   - {fileID: 21300000, guid: 046bb20b05d2bf14886e0637d23b7c43, type: 3}
   - {fileID: 21300000, guid: bb3a1e80b71608b4b85080136f5c5f98, type: 3}
-  ParticleMaterial: {fileID: 2100000, guid: 30456513f5955084fb0dbc829a240c98, type: 2}
   ParticleTextures:
   - {fileID: 2800000, guid: 4b7440415b0f60e4888295f9534b1700, type: 3}
   - {fileID: 2800000, guid: 8f946d23c31cd5447a3f8a8d5a9635ee, type: 3}
@@ -182,7 +181,7 @@ ParticleSystem:
   serializedVersion: 5
   lengthInSec: 3
   simulationSpeed: 1
-  stopAction: 0
+  stopAction: 2
   looping: 0
   prewarm: 0
   playOnAwake: 1

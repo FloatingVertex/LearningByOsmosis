@@ -50,6 +50,11 @@ public class BookBehavior : MonoBehaviour
     {
 	}
 
+    void OnTriggerStay2D(Collider2D other)
+    {
+        OnTriggerEnter2D(other);
+    }
+
     void OnTriggerEnter2D(Collider2D other)
     {
         RigidbodyController character = other.GetComponent<RigidbodyController>();
@@ -61,6 +66,7 @@ public class BookBehavior : MonoBehaviour
                     State = BookState.Held;
                     _heldBy = other.gameObject;
                     transform.parent = other.transform;
+                    transform.localPosition = new Vector3(0, 2, 0);
                     GetComponent<CircleCollider2D>().enabled = false;
                     character.GetBook(this);
                 }
@@ -112,6 +118,7 @@ public class BookBehavior : MonoBehaviour
             _throwDirection = directions[0].normalized;
             State = BookState.Thrown;
             GetComponent<CircleCollider2D>().enabled = true;
+            GetComponent<CircleCollider2D>().offset = new Vector2(0, -0.7f);
             transform.Find("shadow").gameObject.SetActive(true);
             _heldBy.GetComponent<RigidbodyController>().LoseBook();
             for (int i = 1; i < directions.Length; i++)
@@ -120,6 +127,7 @@ public class BookBehavior : MonoBehaviour
                 extraThrownBookBehavior._throwDirection = directions[i].normalized;
                 extraThrownBookBehavior.State = BookState.Thrown;
                 extraThrownBookBehavior.GetComponent<CircleCollider2D>().enabled = true;
+                extraThrownBookBehavior.GetComponent<CircleCollider2D>().offset = new Vector2(0, -0.7f);
                 extraThrownBookBehavior.transform.Find("shadow").gameObject.SetActive(true);
                 extraThrownBookBehavior._heldBy = _heldBy;
                 extraThrownBookBehavior.Kind = Kind;

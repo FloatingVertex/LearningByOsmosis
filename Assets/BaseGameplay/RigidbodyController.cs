@@ -69,6 +69,11 @@ public class RigidbodyController : MonoBehaviour {
         // May want to move the book to the hand position, once we get art and know where that is
     }
 
+    public bool HasBeenHitBy(BookBehavior.KnowledgeType kind)
+    {
+        return activeEffects[(int) kind];
+    }
+
 	// Deals with player being hit by the book
     public void HitByBook(BookBehavior bookBehavior)
     {
