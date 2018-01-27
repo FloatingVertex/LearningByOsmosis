@@ -9,14 +9,20 @@ namespace Assets
 {
     public class Player
     {
+        private readonly InputDevice _device;
+
         public Player(InputDevice inputDevice, Color color)
         {
-            Device = inputDevice;
+            _device = inputDevice;
             Color = color;
             Ready = true;
         }
 
-        public InputDevice Device { get; private set; }
+        public InputDevice Device
+        {
+            get { return _device; }
+        }
+
         public Color Color { get; private set; }
 
         public bool Ready { get; private set; }

@@ -19,6 +19,13 @@ public class RigidbodyController : MonoBehaviour {
     private void FixedUpdate()
     {
         Move(player.Device.LeftStickX, player.Device.LeftStickY, Time.fixedDeltaTime);
+        if (player.Device.Action1.WasPressed && currentBook != null)
+        {
+            if (currentBook.Throw(transform.position, player.Device.LeftStick))
+            {
+                currentBook = null;
+            }
+        }
     }
 
     /// <summary>

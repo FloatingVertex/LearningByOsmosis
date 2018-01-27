@@ -19,9 +19,9 @@ public class BookBehavior : MonoBehaviour
 
     public KnowledgeType Kind { get; set; }
 
-    enum BookState { Grounded, Held, Thrown}
+    public enum BookState { Grounded, Held, Thrown}
 
-    private BookState _state;
+    public BookState State { get; private set; }
 
     private GameObject _heldBy;
 
@@ -29,19 +29,19 @@ public class BookBehavior : MonoBehaviour
 
 	// Use this for initialization
 	void Start () {
-		_state = BookState.Grounded;
+	    State = BookState.Grounded;
 	    Kind = KnowledgeType.Art;
 	}
 
     void OnTriggerEnter2D(Collider2D other)
     {
         RigidbodyController character = other.GetComponent<RigidbodyController>();
-        switch (_state)
+        switch (State)
         {
             case BookState.Grounded:
                 if (character != null && !character.HasBook())
                 {
-                    _state = BookState.Held;
+                    State = BookState.Held;
                     _heldBy = other.gameObject;
                     transform.parent = other.transform;
                     character.GetBook(this);
@@ -50,10 +50,13 @@ public class BookBehavior : MonoBehaviour
             case BookState.Held:
                 break;
             case BookState.Thrown:
-                Destroy(gameObject);
                 if (character != null && character.gameObject != _heldBy)
                 {
                     character.HitByBook(this);
+                }
+                else
+                {
+                    Destroy(gameObject);
                 }
                 break;
             default:
@@ -61,17 +64,23 @@ public class BookBehavior : MonoBehaviour
         }
     }
 
-    public void Throw(Vector3 fromPosition, Vector3 direction)
+    public bool Throw(Vector3 fromPosition, Vector3 direction)
     {
-        transform.position = fromPosition;
-        _throwDirection = direction;
-        _state = BookState.Thrown;
+        if (direction.sqrMagnitude > 0)
+        {
+            transform.parent = null;
+            //transform.position = fromPosition;
+            _throwDirection = direction.normalized;
+            State = BookState.Thrown;
+            return true;
+        }
+        return false;
     }
 
     // Update is called once per frame
     void Update ()
     {
-        if (_state == BookState.Thrown)
+        if (State == BookState.Thrown)
         {
             transform.position += _throwDirection * ThrowSpeed * Time.deltaTime;
         }
