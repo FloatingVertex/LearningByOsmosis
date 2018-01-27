@@ -10,8 +10,9 @@ public class RigidbodyController : MonoBehaviour {
 	bool[] activeEffects;
 	int lifes;
 
+	bool repeatShot;
+	bool hold;
 	public bool splitShotOff;
-
 
     public Player player;
 
@@ -25,7 +26,8 @@ public class RigidbodyController : MonoBehaviour {
         numberAlive++;
 		lifes = 6;
 		activeEffects = new bool[6];
-		splitShotOff = true;
+		splitShotOff = false;
+		repeatShot = true;
     }
 
     private void FixedUpdate()
@@ -33,7 +35,12 @@ public class RigidbodyController : MonoBehaviour {
         Move(player.Device.LeftStickX, player.Device.LeftStickY, Time.fixedDeltaTime, movementSpeed);
 		if (player.Device.RightTrigger.WasPressed && HasBook() && splitShotOff)
         {
-            currentBook.Throw(transform.position, false, player.Device.LeftStick);
+			if (hold) {
+				currentBook.Throw (transform.position, true, player.Device.LeftStick);
+				hold = false;
+			} else {
+				currentBook.Throw (transform.position, false, player.Device.LeftStick);
+			}
         }
     }
 
@@ -66,6 +73,11 @@ public class RigidbodyController : MonoBehaviour {
     public void GetBook(BookBehavior bookBehavior)
     {
         currentBook = bookBehavior;
+		if (repeatShot) {
+			hold = true;
+		} else {
+			hold = false;
+		}
         // May want to move the book to the hand position, once we get art and know where that is
     }
 
