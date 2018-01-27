@@ -18,7 +18,7 @@ public class SplitShot : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-		if (player.Device.Action4.WasPressed && controller.HasBook())
+		if (player.Device.RightTrigger.WasPressed && controller.HasBook())
 		{
 			Debug.Log("Triple shot attempt: ");
 

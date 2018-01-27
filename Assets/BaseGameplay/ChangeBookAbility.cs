@@ -18,7 +18,7 @@ public class ChangeBookAbility : MonoBehaviour {
     // Update is called once per frame
     void Update()
     {
-		if (player.Device.RightBumper.WasPressed)
+		if (player.Device.Action4.WasPressed)
         {
             controller.currentBook.Kind = (BookBehavior.KnowledgeType)(((int)controller.currentBook.Kind + 1)% 6);//6 = number of book types
         }

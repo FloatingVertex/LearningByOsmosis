@@ -6,11 +6,12 @@ using UnityEngine;
 public class BookBehavior : MonoBehaviour
 {
     public float ThrowSpeed;
-
     public Sprite[] BookSprites;
 
     public Texture[] ParticleTextures;
     public Color[] ParticleColors;
+
+
 
     public enum KnowledgeType
     {

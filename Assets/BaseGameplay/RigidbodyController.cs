@@ -10,7 +10,7 @@ public class RigidbodyController : MonoBehaviour {
 	bool[] activeEffects;
 	int lifes;
 
-
+	public bool splitShotOff;
 
 
     public Player player;
@@ -25,12 +25,13 @@ public class RigidbodyController : MonoBehaviour {
         numberAlive++;
 		lifes = 6;
 		activeEffects = new bool[6];
+		splitShotOff = true;
     }
 
     private void FixedUpdate()
     {
         Move(player.Device.LeftStickX, player.Device.LeftStickY, Time.fixedDeltaTime, movementSpeed);
-		if (player.Device.RightTrigger.WasPressed && HasBook())
+		if (player.Device.RightTrigger.WasPressed && HasBook() && splitShotOff)
         {
             currentBook.Throw(transform.position, false, player.Device.LeftStick);
         }
