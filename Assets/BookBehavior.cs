@@ -92,13 +92,13 @@ public class BookBehavior : MonoBehaviour
         }
     }
 
-    public bool Throw(Vector3 fromPosition, Vector3 direction)
+    public bool Throw(Vector3 fromPosition, bool keep, params Vector3[] directions)
     {
-        if (direction.sqrMagnitude > 0)
+        if (directions[0].sqrMagnitude > 0)
         {
             transform.parent = null;
             //transform.position = fromPosition;
-            _throwDirection = direction.normalized;
+            _throwDirection = directions[0].normalized;
             State = BookState.Thrown;
             transform.Find("shadow").gameObject.SetActive(true);
             return true;
