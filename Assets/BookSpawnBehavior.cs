@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using Random = UnityEngine.Random;
 
 public class BookSpawnBehavior : MonoBehaviour
@@ -11,6 +12,8 @@ public class BookSpawnBehavior : MonoBehaviour
 
     private List<RigidbodyController> _players = new List<RigidbodyController>();
     private List<BookBehavior> _books = new List<BookBehavior>();
+
+    private bool _realGame;
 
 	// Use this for initialization
 	void Start ()
@@ -65,10 +68,18 @@ public class BookSpawnBehavior : MonoBehaviour
 	        bookBehavior.Kind = potentialKinds[Random.Range(0, potentialKinds.Count)];
             _books.Add(bookBehavior);
 	    }
+	    if (_realGame && _players.Count <= 1)
+	    {
+	        SceneManager.LoadScene("Victory");
+	    }
 	}
 
     public void RegisterPlayer(RigidbodyController controller)
     {
         _players.Add(controller);
+        if (_players.Count > 1)
+        {
+            _realGame = true;
+        }
     }
 }
