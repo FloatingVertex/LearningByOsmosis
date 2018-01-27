@@ -42,6 +42,10 @@ public class MainMenuBehavior : MonoBehaviour
 	                    {
 	                        _countdownTime = 10;
 	                    }
+	                    if (players.Count(p => p != null && p.Device.IsAttached) > InputManager.Devices.Count - 1)
+	                    {
+	                        _countdownTime = Mathf.Min(_countdownTime, 3);
+	                    }
 	                    break;
 	                }
 	                if (players[i].Device == InputManager.Devices[i])
