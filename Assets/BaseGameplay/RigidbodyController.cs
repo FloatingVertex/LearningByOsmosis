@@ -11,7 +11,7 @@ public class RigidbodyController : MonoBehaviour {
 	int lifes;
 
 	public bool repeatShot;
-	bool hold;
+    public bool hold;
 	public bool splitShotOff;
 
     public Player player;
@@ -26,7 +26,7 @@ public class RigidbodyController : MonoBehaviour {
         numberAlive++;
 		lifes = 6;
 		activeEffects = new bool[6];
-		splitShotOff = true;
+		splitShotOff = false;
 		repeatShot = true;
     }
 
@@ -37,6 +37,7 @@ public class RigidbodyController : MonoBehaviour {
         {
 			if (hold) {
 				currentBook.Throw (transform.position, true, player.Device.LeftStick);
+			    hold = false;
 			} else {
 				currentBook.Throw (transform.position, false, player.Device.LeftStick);
 			}
@@ -72,13 +73,9 @@ public class RigidbodyController : MonoBehaviour {
     public void GetBook(BookBehavior bookBehavior)
     {
         currentBook = bookBehavior;
-		if (repeatShot) {
-			if (hold) {
-				hold = false;
-			}
-			else{
-				hold = true;
-			}
+		if (repeatShot)
+		{
+		    hold = true;
 		} else {
 			hold = false;
 		}
