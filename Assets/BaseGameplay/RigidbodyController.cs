@@ -97,7 +97,9 @@ public class RigidbodyController : MonoBehaviour {
 			AddEffect (adding);
 		}
     }
-	private void AddEffect(BookBehavior.KnowledgeType kt){
+	private void AddEffect(BookBehavior.KnowledgeType kt)
+	{
+	    PlayerHolderBehavior.singleton.RegisterHit(kt);
         //TO DO: change players properties
         switch (kt)
         {
@@ -113,6 +115,11 @@ public class RigidbodyController : MonoBehaviour {
             case BookBehavior.KnowledgeType.Physics:
                 GetComponent<DashAbility>().enabled = true;
                 break;
+            case BookBehavior.KnowledgeType.Literature:
+                break;
+            case BookBehavior.KnowledgeType.Math:
+                splitShotOff = false;
+                break;
         }
         //adds it to the affected array
         player.SetEffect(kt);
@@ -123,7 +130,7 @@ public class RigidbodyController : MonoBehaviour {
             //TO DO kills player
             Destroy(gameObject);
 		}
-	}
+    }
 
     private void OnDestroy()
     {

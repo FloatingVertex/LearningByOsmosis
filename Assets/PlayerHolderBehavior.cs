@@ -7,9 +7,15 @@ public class PlayerHolderBehavior : MonoBehaviour
 {
     public static PlayerHolderBehavior singleton;
     public List<Player> Players;
+    public BookBehavior.KnowledgeType LastHit { get; private set; }
 
 	void Start () {
         singleton = this;
 		DontDestroyOnLoad(gameObject);
 	}
+
+    public void RegisterHit(BookBehavior.KnowledgeType kt)
+    {
+        LastHit = kt;
+    }
 }
