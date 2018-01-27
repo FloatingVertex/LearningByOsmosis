@@ -4,6 +4,13 @@ using UnityEngine;
 using Assets;
 
 public class RigidbodyController : MonoBehaviour {
+	
+	bool[] activeEffects;
+	int lifes;
+
+
+
+
     public Player player;
 
     public float movementSpeed = 1f;
@@ -13,7 +20,8 @@ public class RigidbodyController : MonoBehaviour {
     // Use this for initialization
     void Start()
     {
-
+		lifes = 6;
+		activeEffects = new bool[6];
     }
 
     private void FixedUpdate()
@@ -53,13 +61,28 @@ public class RigidbodyController : MonoBehaviour {
         // May want to move the book to the hand position, once we get art and know where that is
     }
 
+	// Deals with player being hit by the book
     public void HitByBook(BookBehavior bookBehavior)
     {
-        /*TODO:
-         * if(hasn't been hit by this kind yet)
-         * {
-         *  get hit by this kind
-         * }
-         */
+		
+		//get which book hit the player
+		BookBehavior.KnowledgeType adding = bookBehavior.Kind;
+		//check if player was already hit by book
+		if (!activeEffects[(int)adding]) {
+			AddEffect (adding);
+		}
     }
+	private void AddEffect(BookBehavior.KnowledgeType kt){
+		//TO DO: change players properties
+		//adds it to the affected array
+		player.SetEffect(kt);
+		activeEffects [(int)kt] = true;
+		lifes--;
+		//checks if player gets "killed"
+		if (lifes == 0) {
+			//TO DO kills player
+		}
+	}
+
+
 }
