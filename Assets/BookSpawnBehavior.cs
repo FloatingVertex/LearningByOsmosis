@@ -15,6 +15,8 @@ public class BookSpawnBehavior : MonoBehaviour
 
     private bool _realGame;
 
+    private Coroutine victoryCoroutine = null;
+
 	// Use this for initialization
 	void Start ()
     {
@@ -24,6 +26,13 @@ public class BookSpawnBehavior : MonoBehaviour
 	// Update is called once per frame
 	void Update ()
 	{
+	    for (int i = _players.Count - 1; i >= 0; i--)
+	    {
+	        if (_players[i] == null)
+	        {
+	            _players.RemoveAt(i);
+	        }
+	    }
 	    if (_books.Count(b => b.State == BookBehavior.BookState.Grounded) < 2)
 	    {
 	        //Spawn a book!
@@ -49,18 +58,11 @@ public class BookSpawnBehavior : MonoBehaviour
 
 	        for (int i = _players.Count - 1; i >= 0; i--)
 	        {
-	            if (_players[i] == null)
+	            for (int j = 0; j < 6; j++)
 	            {
-	                _players.RemoveAt(i);
-	            }
-	            else
-	            {
-	                for (int j = 0; j < 6; j++)
+	                if (!_players[i].HasBeenHitBy((BookBehavior.KnowledgeType) j))
 	                {
-	                    if (!_players[i].HasBeenHitBy((BookBehavior.KnowledgeType) j))
-	                    {
-	                        potentialKinds.Add((BookBehavior.KnowledgeType) j);
-	                    }
+	                    potentialKinds.Add((BookBehavior.KnowledgeType) j);
 	                }
 	            }
 	        }
@@ -68,11 +70,17 @@ public class BookSpawnBehavior : MonoBehaviour
 	        bookBehavior.Kind = potentialKinds[Random.Range(0, potentialKinds.Count)];
             _books.Add(bookBehavior);
 	    }
-	    if (_realGame && _players.Count <= 1)
+	    if (_realGame && _players.Count <= 1 && victoryCoroutine == null)
 	    {
-	        SceneManager.LoadScene("Victory");
+	        victoryCoroutine = StartCoroutine(DelayedVictory());
 	    }
 	}
+
+    private IEnumerator DelayedVictory()
+    {
+        yield return new WaitForSeconds(2);
+        SceneManager.LoadScene("Victory");
+    }
 
     public void RegisterPlayer(RigidbodyController controller)
     {
