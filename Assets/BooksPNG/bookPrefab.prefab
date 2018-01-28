@@ -151,8 +151,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ThrowSpeed: 13
-  Gravity: 10
-  InitialVerticalVelocity: 1
+  Gravity: 40
+  InitialVerticalVelocity: 10
+  ThrowHeight: 1
   BookSprites:
   - {fileID: 21300000, guid: 66732b699542750489a73975d71399f0, type: 3}
   - {fileID: 21300000, guid: 7cb3757939e33f54783f5b1f07ef293a, type: 3}
