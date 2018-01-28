@@ -34,7 +34,7 @@ public class DashAbility : CooldownAbility
     {
         GameObject particles = Instantiate(ParticlePrefab, transform);
         particles.transform.localPosition = Vector3.zero;
-        yield return new WaitForSeconds(0.5f);
+        yield return new WaitForSeconds(0.2f);
         ParticleSystem.EmissionModule mod = particles.GetComponent<ParticleSystem>().emission;
         mod.enabled = false;
     }
