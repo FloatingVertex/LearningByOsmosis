@@ -21,7 +21,7 @@ public class VictoryScreenBehavior : MonoBehaviour
 	    quoteCategory = PlayerHolderBehavior.singleton.LastHit;
 		played = false;
         //TODO: Load up a quote
-		audioSource = GetComponent<AudioSource>();
+		//audioSource = GetComponent<AudioSource>();
 
 		//PlayerHolderBehavior.singleton.Players
 
