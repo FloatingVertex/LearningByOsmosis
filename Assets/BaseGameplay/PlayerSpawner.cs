@@ -9,7 +9,7 @@ public class PlayerSpawner : MonoBehaviour {
     public GameObject[] spawnPoints;
 
 	// Use this for initialization
-    void Start()
+    void Awake()
     {
         BookSpawnBehavior bookSpawner = GetComponent<BookSpawnBehavior>();
         var playersList = PlayerHolderBehavior.singleton.Players;
