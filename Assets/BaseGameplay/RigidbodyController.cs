@@ -16,6 +16,10 @@ public class RigidbodyController : MonoBehaviour {
 
     public AudioSource singleSource;
     public AudioClip singleSound;
+    public AudioClip liftSound;
+    public AudioClip hitSound;
+    public AudioClip nullSound;
+    public AudioClip deadSound;
 
     public Player player;
 
@@ -39,6 +43,10 @@ public class RigidbodyController : MonoBehaviour {
         player.controller = this;
         singleSource = (AudioSource)gameObject.AddComponent<AudioSource>();
         singleSound = (AudioClip)Resources.Load("singleShot.mp3");
+        nullSound = (AudioClip)Resources.Load("nullHit.mp3");
+        liftSound = (AudioClip)Resources.Load("liftSound.mp3");
+        hitSound = (AudioClip)Resources.Load("hitSound.mp3");
+        deadSound = (AudioClip)Resources.Load("deadSound.mp3");
     }
 
     private void FixedUpdate()
@@ -89,6 +97,7 @@ public class RigidbodyController : MonoBehaviour {
     public void GetBook(BookBehavior bookBehavior)
     {
         currentBook = bookBehavior;
+        singleSource.PlayOneShot(liftSound);
 		if (repeatShot)
 		{
 		    hold = true;
@@ -112,10 +121,15 @@ public class RigidbodyController : MonoBehaviour {
 		if (!activeEffects[(int)adding]) {
 			AddEffect (adding);
 		}
+        else
+        {
+            singleSource.PlayOneShot(nullSound);
+        }
     }
 	private void AddEffect(BookBehavior.KnowledgeType kt)
 	{
 	    PlayerHolderBehavior.singleton.RegisterHit(kt);
+        singleSource.PlayOneShot(hitSound);
         //TO DO: change players properties
         switch (kt)
         {
@@ -144,6 +158,7 @@ public class RigidbodyController : MonoBehaviour {
 		lifes--;
 		//checks if player gets "killed"
 		if (lifes == 0) {
+            singleSource.PlayOneShot(deadSound);
             //TO DO kills player
             Destroy(gameObject);
 		}

@@ -13,7 +13,6 @@ public class CooldownAbility : MonoBehaviour {
     [HideInInspector]
     public bool abilityAvalibleToUse = true;
 
-
     protected bool TryToUseAbility()
     {
         if (!abilityAvalibleToUse)
