@@ -16,7 +16,7 @@ public class ChangeBookAbility : MonoBehaviour {
         controller = GetComponent<RigidbodyController>();
         player = controller.player;
         changeSource = (AudioSource)gameObject.AddComponent<AudioSource>();
-        changeSound = (AudioClip)Resources.Load("changeSound.mp3");
+        changeSound = (AudioClip)Resources.Load("bookChange");
     }
     // Update is called once per frame
     void Update()
