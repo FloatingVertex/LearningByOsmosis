@@ -45,31 +45,7 @@ public class RecallAbility : CooldownAbility {
         //recall if button is pressed
         if (player.Device.Action3.WasPressed && TryToUseAbility())
         {
-
-            var positions = oldPositions.ToArray();
-            bool abilityUsed = false;
-            recallSource.PlayOneShot(recallSound);
-            for(int i = 0; i < positions.Length; i++)
-            {
-                var position = positions[i];
-                Vector2 positionToCheck = new Vector2(position.x, position.y);
-                var raycastHit = Physics2D.OverlapCircle(positionToCheck, areaCheckRadius, areaCheckLayerMask);
-                if(raycastHit == null)
-                {
-                    transform.position = position;
-                    oldPositions = new Queue<Vector3>();
-                    abilityUsed = true;
-                    ghostObject.SetActive(false);
-                    break;
-                }
-            }
-            if(!abilityUsed)
-            {
-                abilityAvalibleToUse = true;
-            }
-
             StartCoroutine(GhostRecall());
-
         }
         if (oldPositions.Count > (tracebackTime / Time.fixedDeltaTime) / 2 && abilityAvalibleToUse)
         {
