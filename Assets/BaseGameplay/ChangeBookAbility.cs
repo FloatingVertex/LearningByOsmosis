@@ -9,11 +9,14 @@ public class ChangeBookAbility : MonoBehaviour {
     protected RigidbodyController controller;
     protected Player player;
     protected GameObject ghostObject;
-
+    public AudioSource changeSource;
+    public AudioClip changeSound;
     protected void Start()
     {
         controller = GetComponent<RigidbodyController>();
         player = controller.player;
+        changeSource = (AudioSource)gameObject.AddComponent<AudioSource>();
+        changeSound = (AudioClip)Resources.Load("changeSound.mp3");
     }
     // Update is called once per frame
     void Update()
@@ -24,6 +27,7 @@ public class ChangeBookAbility : MonoBehaviour {
             {
                 int oldIdx = HealthBarUpdater.IndexInPieOrder(controller.currentBook.Kind);
                 controller.currentBook.Kind = HealthBarUpdater.pieOrder[(oldIdx + 1) % 6];//6 = number of book types
+                changeSource.PlayOneShot(changeSound);
             }
         }
     }

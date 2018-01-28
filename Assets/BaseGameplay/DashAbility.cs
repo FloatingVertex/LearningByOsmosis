@@ -12,11 +12,15 @@ public class DashAbility : CooldownAbility
     protected Player player;
 
     public GameObject ParticlePrefab;
+    public AudioSource dashSource;
+    public AudioClip dashSound;
 
     protected void Start()
     {
         controller = GetComponent<RigidbodyController>();
         player = controller.player;
+        dashSource = (AudioSource)gameObject.AddComponent<AudioSource>();
+        dashSound = (AudioClip)Resources.Load("dashSound.mp3");
     }
 
     private void Update()
@@ -27,6 +31,7 @@ public class DashAbility : CooldownAbility
             Debug.Log("Dash used by "+ player.Color);
             controller.Move(player.Device.LeftStickX, player.Device.LeftStickY,1f, dashForce);
             StartCoroutine(ApplyParticles());
+            dashSource.PlayOneShot(dashSound);
         }
     }
 
