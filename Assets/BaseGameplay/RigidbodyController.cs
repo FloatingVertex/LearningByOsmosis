@@ -25,8 +25,8 @@ public class RigidbodyController : MonoBehaviour {
         numberAlive++;
 		lifes = 6;
 		activeEffects = new bool[6];
-		splitShotOff = false;
-		repeatShot = true;
+		splitShotOff = true;
+		repeatShot = false;
     }
 
     private void FixedUpdate()
