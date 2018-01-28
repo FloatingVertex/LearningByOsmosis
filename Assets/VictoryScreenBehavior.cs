@@ -8,6 +8,8 @@ public class VictoryScreenBehavior : MonoBehaviour
 {
     private float _countdownTimer;
 	public AudioSource audioSource;
+	//protected Player player;
+
 	AudioClip toPlay;
 	protected bool played;
 	BookBehavior.KnowledgeType quoteCategory;
@@ -20,6 +22,9 @@ public class VictoryScreenBehavior : MonoBehaviour
 		played = false;
         //TODO: Load up a quote
 		audioSource = GetComponent<AudioSource>();
+
+		//PlayerHolderBehavior.singleton.Players
+
 	}
 	
 	// Update is called once per frame
@@ -29,11 +34,15 @@ public class VictoryScreenBehavior : MonoBehaviour
 	    _countdownTimer -= Time.deltaTime;
 		if (!played && _countdownTimer < 20) {
 			int track = Random.Range (0, 6);
-			audioSource.PlayOneShot (clips [1 * 5 + track]);
+			audioSource.PlayOneShot (clips [(int)quoteCategory * 5 + track]);
 			played = true;
 		}
 		if (_countdownTimer < 9) {
-			
+			for (int i = 0; i < PlayerHolderBehavior.singleton.Players.Count; i++) {
+				if (PlayerHolderBehavior.singleton.Players [i].Device.Action1) {
+					_countdownTimer -= 2;
+				}
+			}
 		}
 	    if (_countdownTimer < 0)
 	    {
