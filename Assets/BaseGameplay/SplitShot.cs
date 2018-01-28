@@ -6,6 +6,8 @@ using Assets;
 [RequireComponent(typeof(RigidbodyController))]
 public class SplitShot : MonoBehaviour {
 	public float splitAngle = 30;
+    public AudioSource multiSource;
+    public AudioClip multiSound;
 	protected RigidbodyController controller;
 
 	protected Player player;
@@ -14,7 +16,9 @@ public class SplitShot : MonoBehaviour {
 	{
 		controller = GetComponent<RigidbodyController>();
 		player = controller.player;
-	}
+        multiSource = (AudioSource)gameObject.AddComponent<AudioSource>();
+        multiSound = (AudioClip)Resources.Load("multiShot.mp3");        
+    }
 	
 	// Update is called once per frame
 	void Update () {
@@ -22,6 +26,7 @@ public class SplitShot : MonoBehaviour {
 		{
 			Debug.Log("Triple shot attempt: ");
 
+            multiSource.PlayOneShot(multiSound);
 			Vector3[] directions = new Vector3[3];
 			directions [0] = controller.lastMoved;
 			directions [1] = Quaternion.Euler(0,0,splitAngle) * controller.lastMoved;
