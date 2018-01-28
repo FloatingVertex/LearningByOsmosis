@@ -286,6 +286,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   splitAngle: 15.03
+  multiSource: {fileID: 0}
+  multiSound: {fileID: 0}
 --- !u!114 &114296056095732106
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -305,6 +307,9 @@ MonoBehaviour:
     type: 2}
   AppearParticlePrefab: {fileID: 1818895791676916, guid: 195ad6ab6e896224b899bc88ccede4f6,
     type: 2}
+  InvisAudio: {fileID: 0}
+  InvisClipStart: {fileID: 0}
+  InvisClipEnd: {fileID: 0}
 --- !u!114 &114467053612861856
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -322,6 +327,8 @@ MonoBehaviour:
   dashForce: 20000
   ParticlePrefab: {fileID: 1498390563655084, guid: f2ca9e2b50fd23d438185a3117760a7b,
     type: 2}
+  dashSource: {fileID: 0}
+  dashSound: {fileID: 0}
 --- !u!114 &114581376585004552
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -338,6 +345,12 @@ MonoBehaviour:
   repeatShot: 0
   hold: 0
   splitShotOff: 0
+  singleSource: {fileID: 0}
+  singleSound: {fileID: 0}
+  liftSound: {fileID: 0}
+  hitSound: {fileID: 0}
+  nullSound: {fileID: 0}
+  deadSound: {fileID: 0}
   playerSprites:
   - {fileID: 21300000, guid: adc12cff6edb79a4889494164bc9d944, type: 3}
   - {fileID: 21300000, guid: d008b59c67eaf0147b8fd67ed400c859, type: 3}
@@ -367,6 +380,8 @@ MonoBehaviour:
     m_Bits: 4294967295
   ghostPrefab: {fileID: 1580374289121718, guid: 727b145d09c0ef04a995f31e9dd8c85e,
     type: 2}
+  recallSource: {fileID: 0}
+  recallSound: {fileID: 0}
   ParticlePrefab: {fileID: 1196392709346970, guid: 26220aab51af117439c6d8b5cfc5fb2b,
     type: 2}
 --- !u!114 &114716838213835892
@@ -380,6 +395,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c2dd919ce75ae6a47bd0736e94b1accd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  changeSource: {fileID: 0}
+  changeSound: {fileID: 0}
 --- !u!114 &114791296811867290
 MonoBehaviour:
   m_ObjectHideFlags: 1
