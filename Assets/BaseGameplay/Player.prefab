@@ -333,6 +333,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a4f57954e670f94680c69f788f3131e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  GraduationPrefab: {fileID: 1571637719290112, guid: ec220602fa59ec2468f6c091d160a00b,
+    type: 2}
   repeatShot: 0
   hold: 0
   splitShotOff: 0
