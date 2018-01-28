@@ -7,6 +7,14 @@ using UnityEngine;
 
 namespace Assets
 {
+    public enum PlayerColor
+    {
+        Red,
+        Green,
+        Blue,
+        Yellow,
+    }
+
     public class Player
     {
         private readonly InputDevice _device;
@@ -14,10 +22,11 @@ namespace Assets
 		public bool[] activeEffects;
 
 
-        public Player(InputDevice inputDevice, Color color)
+        public Player(InputDevice inputDevice, Color color,PlayerColor playerColor)
         {
             _device = inputDevice;
             Color = color;
+            PlayerColor = playerColor;
             Ready = true;
 			activeEffects = new bool[6];
         }
@@ -28,6 +37,8 @@ namespace Assets
         }
 
         public Color Color { get; private set; }
+
+        public PlayerColor PlayerColor { get; private set; }
 
         public bool Ready { get; private set; }
 		

@@ -20,7 +20,6 @@ GameObject:
   m_Component:
   - component: {fileID: 4367829164508778}
   - component: {fileID: 212454033700902368}
-  - component: {fileID: 60934545083246082}
   - component: {fileID: 50882244891103860}
   - component: {fileID: 114581376585004552}
   - component: {fileID: 114467053612861856}
@@ -28,6 +27,7 @@ GameObject:
   - component: {fileID: 114581735684262730}
   - component: {fileID: 114716838213835892}
   - component: {fileID: 114228266207480834}
+  - component: {fileID: 61920557240079308}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -43,7 +43,7 @@ Transform:
   m_GameObject: {fileID: 1166799856775902}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 1.1206284, y: -0.44891092, z: 0}
-  m_LocalScale: {x: 0.4, y: 0.4, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -68,8 +68,8 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 1
   m_Constraints: 4
---- !u!60 &60934545083246082
-PolygonCollider2D:
+--- !u!61 &61920557240079308
+BoxCollider2D:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
@@ -84,18 +84,15 @@ PolygonCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 2.25, y: 2.25}
+    oldSize: {x: 0.876, y: 1.1}
     newSize: {x: 2.25, y: 2.25}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Points:
-    m_Paths:
-    - - {x: -1.125, y: 1.125}
-      - {x: -1.125, y: -1.125}
-      - {x: 1.125, y: -1.125}
-      - {x: 1.125, y: 1.125}
+  serializedVersion: 2
+  m_Size: {x: 0.876, y: 1.1}
+  m_EdgeRadius: 0
 --- !u!114 &114228266207480834
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -148,8 +145,14 @@ MonoBehaviour:
   repeatShot: 0
   hold: 0
   splitShotOff: 0
+  playerSprites:
+  - {fileID: 21300000, guid: adc12cff6edb79a4889494164bc9d944, type: 3}
+  - {fileID: 21300000, guid: d008b59c67eaf0147b8fd67ed400c859, type: 3}
+  - {fileID: 21300000, guid: 01495eb17b2cec54387b62d2fb64729e, type: 3}
+  - {fileID: 21300000, guid: f97c30b38d1cfc94dadcdd544dc2e00b, type: 3}
   movementSpeed: 1000
   currentBook: {fileID: 0}
+  lastMoved: {x: 0, y: 0}
 --- !u!114 &114581735684262730
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -214,7 +217,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 14d51fef0a41b8749becde3bb0e1f6df, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 01495eb17b2cec54387b62d2fb64729e, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0

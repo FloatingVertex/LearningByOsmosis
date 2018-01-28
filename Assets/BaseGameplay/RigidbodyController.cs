@@ -15,6 +15,8 @@ public class RigidbodyController : MonoBehaviour {
 
     public Player player;
 
+    public Sprite[] playerSprites;
+
     public float movementSpeed = 1f;
 
     public BookBehavior currentBook;
@@ -29,6 +31,7 @@ public class RigidbodyController : MonoBehaviour {
 		activeEffects = new bool[6];
 		splitShotOff = true;
 		repeatShot = false;
+        GetComponent<SpriteRenderer>().sprite = playerSprites[(int)player.PlayerColor];
     }
 
     private void FixedUpdate()
