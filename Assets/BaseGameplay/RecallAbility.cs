@@ -12,6 +12,9 @@ public class RecallAbility : CooldownAbility {
     public AudioSource recallSource;
     public AudioClip recallSound;
 
+    public GameObject ParticlePrefab;
+    protected ParticleSystem particles;
+
     protected Queue<Vector3> oldPositions = new Queue<Vector3>();
     protected RigidbodyController controller;
     protected Player player;
@@ -28,6 +31,13 @@ public class RecallAbility : CooldownAbility {
 
         ghostObject.GetComponent<SpriteRenderer>().sprite = GetComponent<SpriteRenderer>().sprite;
 
+<<<<<<< HEAD
+=======
+        particles = Instantiate(ParticlePrefab, transform)
+            .GetComponent<ParticleSystem>();
+        particles.GetComponent<Renderer>().material.mainTexture =
+            controller.playerSprites[(int) controller.player.PlayerColor].texture;
+>>>>>>> 7c66c6a4de0a37ec4545f97bd979772768f46c1e
     }
 
     private void Update()
@@ -36,6 +46,7 @@ public class RecallAbility : CooldownAbility {
         //recall if button is pressed
         if (player.Device.Action3.WasPressed && TryToUseAbility())
         {
+<<<<<<< HEAD
             var positions = oldPositions.ToArray();
             bool abilityUsed = false;
             recallSource.PlayOneShot(recallSound);
@@ -57,12 +68,44 @@ public class RecallAbility : CooldownAbility {
             {
                 abilityAvalibleToUse = true;
             }
+=======
+            StartCoroutine(GhostRecall());
+>>>>>>> 7c66c6a4de0a37ec4545f97bd979772768f46c1e
         }
         if (oldPositions.Count > (tracebackTime / Time.fixedDeltaTime) / 2 && abilityAvalibleToUse)
         {
             ghostObject.transform.position = oldPositions.Peek();
             ghostObject.SetActive(true);
         }
+    }
+
+    private IEnumerator GhostRecall()
+    {
+        var positions = oldPositions.ToArray();
+        bool abilityUsed = false;
+        particles.Play();
+        yield return null;
+
+        for (int i = 0; i < positions.Length; i++)
+        {
+            var position = positions[i];
+            Vector2 positionToCheck = new Vector2(position.x, position.y);
+            var raycastHit = Physics2D.OverlapCircle(positionToCheck, areaCheckRadius, areaCheckLayerMask);
+            if (raycastHit == null)
+            {
+                transform.position = position;
+                oldPositions = new Queue<Vector3>();
+                abilityUsed = true;
+                ghostObject.SetActive(false);
+                break;
+            }
+        }
+        if (!abilityUsed)
+        {
+            abilityAvalibleToUse = true;
+        }
+        yield return null;
+        particles.Stop();
     }
 
     // Update is called once per frame
