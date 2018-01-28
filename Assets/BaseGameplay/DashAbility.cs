@@ -20,7 +20,7 @@ public class DashAbility : CooldownAbility
         controller = GetComponent<RigidbodyController>();
         player = controller.player;
         dashSource = (AudioSource)gameObject.AddComponent<AudioSource>();
-        dashSound = (AudioClip)Resources.Load("dashSound.mp3");
+        dashSound = (AudioClip)Resources.Load("dash.wav");
     }
 
     private void Update()

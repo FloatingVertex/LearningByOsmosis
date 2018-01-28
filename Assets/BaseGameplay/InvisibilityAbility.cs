@@ -25,8 +25,8 @@ public class InvisibilityAbility : CooldownAbility
         controller = GetComponent<RigidbodyController>();
         player = controller.player;
         InvisAudio = (AudioSource)gameObject.AddComponent<AudioSource>();
-        InvisClipStart = (AudioClip)Resources.Load("invisSound1.mp3");
-        InvisClipEnd = (AudioClip)Resources.Load("invisSound2.mp3");
+        InvisClipStart = (AudioClip)Resources.Load("invisibleIn.wav");
+        InvisClipEnd = (AudioClip)Resources.Load("InvisibleOut.wav");
     }
 
     // Update is called once per frame
