@@ -22,7 +22,8 @@ public class ChangeBookAbility : MonoBehaviour {
         {
             if (controller.currentBook != null)
             {
-                controller.currentBook.Kind = (BookBehavior.KnowledgeType)(((int)controller.currentBook.Kind + 1) % 6);//6 = number of book types
+                int oldIdx = HealthBarUpdater.IndexInPieOrder(controller.currentBook.Kind);
+                controller.currentBook.Kind = HealthBarUpdater.pieOrder[(oldIdx + 1) % 6];//6 = number of book types
             }
         }
     }

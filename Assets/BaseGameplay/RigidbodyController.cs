@@ -7,6 +7,7 @@ public class RigidbodyController : MonoBehaviour {
 
     public static int numberAlive = 0;
 
+
 	bool[] activeEffects;
 	int lifes;
 

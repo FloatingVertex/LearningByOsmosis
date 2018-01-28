@@ -69,7 +69,7 @@ public class BookBehavior : MonoBehaviour
                     State = BookState.Held;
                     _heldBy = other.gameObject;
                     transform.parent = other.transform;
-                    transform.localPosition = new Vector3(0, 2, 0);
+                    transform.localPosition = new Vector3(0, 1, 0);
                     GetComponent<CircleCollider2D>().enabled = false;
                     character.GetBook(this);
                 }
