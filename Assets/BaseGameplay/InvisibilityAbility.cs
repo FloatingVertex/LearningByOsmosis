@@ -8,6 +8,9 @@ public class InvisibilityAbility : CooldownAbility
 
     public float invisLength = 1.0f;
 
+    public GameObject VanishParticlePrefab;
+    public GameObject AppearParticlePrefab;
+
     protected RigidbodyController controller;
     protected Player player;
 
@@ -50,6 +53,17 @@ public class InvisibilityAbility : CooldownAbility
                 c.enabled = false;
             }
             isVisible = false;
+
+            ParticleSystem vparticles = Instantiate(VanishParticlePrefab, transform)
+                .GetComponent<ParticleSystem>();
+            vparticles.GetComponent<Renderer>().material.mainTexture =
+                controller.playerSprites[(int) controller.player.PlayerColor].texture;
+
+
+            ParticleSystem aparticles = Instantiate(AppearParticlePrefab, transform)
+                .GetComponent<ParticleSystem>();
+            aparticles.GetComponent<Renderer>().material.mainTexture =
+                controller.playerSprites[(int)controller.player.PlayerColor].texture;
         }
     }
 }
