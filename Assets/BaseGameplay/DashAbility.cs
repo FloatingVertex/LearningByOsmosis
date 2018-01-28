@@ -10,6 +10,9 @@ public class DashAbility : CooldownAbility
 
     protected RigidbodyController controller;
     protected Player player;
+
+    public GameObject ParticlePrefab;
+
     protected void Start()
     {
         controller = GetComponent<RigidbodyController>();
@@ -23,6 +26,16 @@ public class DashAbility : CooldownAbility
         {
             Debug.Log("Dash used by "+ player.Color);
             controller.Move(player.Device.LeftStickX, player.Device.LeftStickY,1f, dashForce);
+            StartCoroutine(ApplyParticles());
         }
+    }
+
+    private IEnumerator ApplyParticles()
+    {
+        GameObject particles = Instantiate(ParticlePrefab, transform);
+        particles.transform.localPosition = Vector3.zero;
+        yield return new WaitForSeconds(0.5f);
+        ParticleSystem.EmissionModule mod = particles.GetComponent<ParticleSystem>().emission;
+        mod.enabled = false;
     }
 }

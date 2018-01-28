@@ -312,6 +312,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   cooldown: 1
   dashForce: 20000
+  ParticlePrefab: {fileID: 1498390563655084, guid: f2ca9e2b50fd23d438185a3117760a7b,
+    type: 2}
 --- !u!114 &114581376585004552
 MonoBehaviour:
   m_ObjectHideFlags: 1
