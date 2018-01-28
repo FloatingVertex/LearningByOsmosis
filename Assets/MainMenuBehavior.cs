@@ -16,7 +16,7 @@ public class MainMenuBehavior : MonoBehaviour
 
     private Player[] players;
     private float _countdownTime;
-    private Color[] _colors = {Color.red, Color.green, Color.blue, Color.yellow};
+    public Color[] _colors = {Color.red, Color.green, Color.blue, Color.yellow};
 
 	// Use this for initialization
 	void Start () {
