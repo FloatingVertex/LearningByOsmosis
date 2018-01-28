@@ -127,7 +127,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1166799856775902}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 37cb71f90954fcb4f9c190780ac0b2fe, type: 3}
   m_Name: 
@@ -145,6 +145,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5a4f57954e670f94680c69f788f3131e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  repeatShot: 0
+  hold: 0
+  splitShotOff: 0
   movementSpeed: 1000
   currentBook: {fileID: 0}
 --- !u!114 &114581735684262730
