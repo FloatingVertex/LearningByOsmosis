@@ -32,7 +32,7 @@ public class RigidbodyController : MonoBehaviour {
     private void FixedUpdate()
     {
         Move(player.Device.LeftStickX, player.Device.LeftStickY, Time.fixedDeltaTime, movementSpeed);
-		if (player.Device.RightTrigger.WasPressed && HasBook() && splitShotOff)
+		if ((player.Device.RightBumper.WasPressed || player.Device.RightTrigger.WasPressed) && HasBook() && splitShotOff)
         {
 			if (hold) {
 				currentBook.Throw (transform.position, true, player.Device.LeftStick);

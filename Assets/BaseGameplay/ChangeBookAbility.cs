@@ -20,7 +20,10 @@ public class ChangeBookAbility : MonoBehaviour {
     {
 		if (player.Device.Action4.WasPressed)
         {
-            controller.currentBook.Kind = (BookBehavior.KnowledgeType)(((int)controller.currentBook.Kind + 1)% 6);//6 = number of book types
+            if (controller.currentBook != null)
+            {
+                controller.currentBook.Kind = (BookBehavior.KnowledgeType)(((int)controller.currentBook.Kind + 1) % 6);//6 = number of book types
+            }
         }
     }
 }
