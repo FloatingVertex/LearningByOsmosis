@@ -135,6 +135,9 @@ public class RigidbodyController : MonoBehaviour
 	{
 	    PlayerHolderBehavior.singleton.RegisterHit(kt);
         singleSource.PlayOneShot(hitSound);
+
+	    StartCoroutine(HitRumble());
+
         //TO DO: change players properties
         switch (kt)
         {
@@ -171,6 +174,13 @@ public class RigidbodyController : MonoBehaviour
 		        Instantiate(GraduationPrefab, transform.position, Quaternion.identity);
 		    }
 		}
+    }
+
+    private IEnumerator HitRumble()
+    {
+        player.Device.Vibrate(0.5f);
+        yield return new WaitForSeconds(0.5f);
+        player.Device.StopVibration();
     }
 
     private void OnDestroy()
