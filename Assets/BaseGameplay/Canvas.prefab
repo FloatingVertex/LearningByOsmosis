@@ -547,7 +547,6 @@ GameObject:
   - component: {fileID: 224721226190998748}
   - component: {fileID: 222752638871602822}
   - component: {fileID: 114754122569848396}
-  - component: {fileID: 114697519420807362}
   m_Layer: 5
   m_Name: Panel (4)
   m_TagString: Untagged
@@ -614,7 +613,6 @@ GameObject:
   - component: {fileID: 224848311892892070}
   - component: {fileID: 222618048419304744}
   - component: {fileID: 114837647935094672}
-  - component: {fileID: 114096907340034680}
   m_Layer: 5
   m_Name: Panel (4)
   m_TagString: Untagged
@@ -1159,7 +1157,6 @@ GameObject:
   - component: {fileID: 224369228017718494}
   - component: {fileID: 222333704380985934}
   - component: {fileID: 114812403149028056}
-  - component: {fileID: 114968117959438770}
   m_Layer: 5
   m_Name: Panel (4)
   m_TagString: Untagged
@@ -1855,7 +1852,6 @@ GameObject:
   - component: {fileID: 224521213260798630}
   - component: {fileID: 222916030171362260}
   - component: {fileID: 114504406804696020}
-  - component: {fileID: 114593997603883720}
   m_Layer: 5
   m_Name: Panel (4)
   m_TagString: Untagged
@@ -2797,28 +2793,6 @@ MonoBehaviour:
     m_VerticalOverflow: 0
     m_LineSpacing: 1
   m_Text: Graduated
---- !u!114 &114096907340034680
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1214709299805334}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ab0ed39337ad98a47a9b1f2074595bc9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerId: 0
-  activatablePieces:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  imagesToRecolor: []
-  disableOnDeath: []
-  fadeOnDeath: {fileID: 0}
 --- !u!114 &114097237648174656
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4271,28 +4245,6 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
---- !u!114 &114593997603883720
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1778138635022344}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ab0ed39337ad98a47a9b1f2074595bc9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerId: 0
-  activatablePieces:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  imagesToRecolor: []
-  disableOnDeath: []
-  fadeOnDeath: {fileID: 0}
 --- !u!114 &114605601899016048
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -4734,28 +4686,6 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
---- !u!114 &114697519420807362
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1196092352430590}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ab0ed39337ad98a47a9b1f2074595bc9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerId: 0
-  activatablePieces:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  imagesToRecolor: []
-  disableOnDeath: []
-  fadeOnDeath: {fileID: 0}
 --- !u!114 &114697764696740606
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -5888,28 +5818,6 @@ MonoBehaviour:
       m_Calls: []
     m_TypeName: UnityEngine.UI.Slider+SliderEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
---- !u!114 &114968117959438770
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1415128492350704}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ab0ed39337ad98a47a9b1f2074595bc9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  playerId: 0
-  activatablePieces:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  imagesToRecolor: []
-  disableOnDeath: []
-  fadeOnDeath: {fileID: 0}
 --- !u!114 &114969432565705492
 MonoBehaviour:
   m_ObjectHideFlags: 1

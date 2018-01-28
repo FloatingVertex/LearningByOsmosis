@@ -55,11 +55,15 @@ public class RigidbodyController : MonoBehaviour
 
     private void FixedUpdate()
     {
+        Move(player.Device.LeftStickX, player.Device.LeftStickY, Time.fixedDeltaTime, movementSpeed);
+    }
+
+    private void Update()
+    {
         if (((Vector2) player.Device.LeftStick).magnitude > 0)
         {
             lastMoved = player.Device.LeftStick;
         }
-        Move(player.Device.LeftStickX, player.Device.LeftStickY, Time.fixedDeltaTime, movementSpeed);
 		if ((player.Device.RightTrigger.WasPressed || player.Device.RightBumper.WasPressed) && HasBook() && splitShotOff)
         {
             singleSource.PlayOneShot(singleSound);
@@ -88,10 +92,6 @@ public class RigidbodyController : MonoBehaviour
 
         GetComponent<Rigidbody2D>().AddForce(movement * movementSpeed, ForceMode2D.Force);
     }
-    // Update is called once per frame
-    void Update () {
-		
-	}
 
     public bool HasBook()
     {
