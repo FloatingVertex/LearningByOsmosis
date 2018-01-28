@@ -14,6 +14,9 @@ public class RigidbodyController : MonoBehaviour {
 	public bool repeatShot;
 	public bool hold;	public bool splitShotOff;
 
+    public AudioSource singleSource;
+    public AudioClip singleSound;
+
     public Player player;
 
     public Sprite[] playerSprites;
@@ -34,6 +37,8 @@ public class RigidbodyController : MonoBehaviour {
 		repeatShot = false;
         GetComponent<SpriteRenderer>().sprite = playerSprites[(int)player.PlayerColor];
         player.controller = this;
+        singleSource = (AudioSource)gameObject.AddComponent<AudioSource>();
+        singleSound = (AudioClip)Resources.Load("singleShot.mp3");
     }
 
     private void FixedUpdate()
@@ -45,6 +50,7 @@ public class RigidbodyController : MonoBehaviour {
         Move(player.Device.LeftStickX, player.Device.LeftStickY, Time.fixedDeltaTime, movementSpeed);
 		if ((player.Device.RightTrigger.WasPressed || player.Device.RightBumper.WasPressed) && HasBook() && splitShotOff)
         {
+            singleSource.PlayOneShot(singleSound);
 			if (hold) {
 				currentBook.Throw (transform.position, true, lastMoved);
 			    hold = false;

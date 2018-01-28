@@ -10,6 +10,9 @@ public class InvisibilityAbility : CooldownAbility
 
     public GameObject VanishParticlePrefab;
     public GameObject AppearParticlePrefab;
+    public AudioSource InvisAudio;
+    public AudioClip InvisClipStart;
+    public AudioClip InvisClipEnd;
 
     protected RigidbodyController controller;
     protected Player player;
@@ -21,6 +24,9 @@ public class InvisibilityAbility : CooldownAbility
     {
         controller = GetComponent<RigidbodyController>();
         player = controller.player;
+        InvisAudio = (AudioSource)gameObject.AddComponent<AudioSource>();
+        InvisClipStart = (AudioClip)Resources.Load("invisSound1.mp3");
+        InvisClipEnd = (AudioClip)Resources.Load("invisSound2.mp3");
     }
 
     // Update is called once per frame
@@ -35,6 +41,7 @@ public class InvisibilityAbility : CooldownAbility
             {
                 invisibilityTimer = 0.0f;
                 isVisible = true;
+                InvisAudio.PlayOneShot(InvisClipEnd);
                 var componentsToDisable = GetComponentsInChildren<Renderer>();
                 foreach (Renderer c in componentsToDisable)
                 {
@@ -58,7 +65,7 @@ public class InvisibilityAbility : CooldownAbility
                 .GetComponent<ParticleSystem>();
             vparticles.GetComponent<Renderer>().material.mainTexture =
                 controller.playerSprites[(int) controller.player.PlayerColor].texture;
-
+            InvisAudio.PlayOneShot(InvisClipStart);
 
             ParticleSystem aparticles = Instantiate(AppearParticlePrefab, transform)
                 .GetComponent<ParticleSystem>();
