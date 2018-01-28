@@ -3,7 +3,10 @@ using System.Collections.Generic;
 using UnityEngine;
 using Assets;
 
-public class RigidbodyController : MonoBehaviour {
+public class RigidbodyController : MonoBehaviour
+{
+
+    public GameObject GraduationPrefab;
 
     public static int numberAlive = 0;
 
@@ -161,6 +164,10 @@ public class RigidbodyController : MonoBehaviour {
             singleSource.PlayOneShot(deadSound);
             //TO DO kills player
             Destroy(gameObject);
+		    if (GraduationPrefab != null)
+		    {
+		        Instantiate(GraduationPrefab, transform.position, Quaternion.identity);
+		    }
 		}
     }
 

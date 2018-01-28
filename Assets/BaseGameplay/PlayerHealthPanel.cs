@@ -39,7 +39,7 @@ public class PlayerHealthPanel : MonoBehaviour {
             var originalColor = fadeOnDeath.color;
             originalColor.a = 0.5f;
             fadeOnDeath.color = originalColor;
-            gameObject.SetActive(false);
+            enabled = false;
             return;
         }
         for(int i = 0; i < player.activeEffects.Length; i++)
