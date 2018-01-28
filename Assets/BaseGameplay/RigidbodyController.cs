@@ -46,11 +46,11 @@ public class RigidbodyController : MonoBehaviour
         GetComponent<SpriteRenderer>().sprite = playerRestingSprites[(int)player.PlayerColor];
         player.controller = this;
         singleSource = (AudioSource)gameObject.AddComponent<AudioSource>();
-        singleSound = (AudioClip)Resources.Load("bookThrow.wav");
-        nullSound = (AudioClip)Resources.Load("invincibilityHit.wav");
-        liftSound = (AudioClip)Resources.Load("bookPickup.wav");
-        hitSound = (AudioClip)Resources.Load("bookHit.wav");
-        deadSound = (AudioClip)Resources.Load("headexplode.wav");
+        singleSound = (AudioClip)Resources.Load("bookThrow");
+        nullSound = (AudioClip)Resources.Load("invincibilityHit");
+        liftSound = (AudioClip)Resources.Load("bookPickup");
+        hitSound = (AudioClip)Resources.Load("bookHit");
+        deadSound = (AudioClip)Resources.Load("headexplode");
     }
 
     private void FixedUpdate()

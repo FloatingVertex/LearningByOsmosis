@@ -17,7 +17,7 @@ public class SplitShot : MonoBehaviour {
 		controller = GetComponent<RigidbodyController>();
 		player = controller.player;
         multiSource = (AudioSource)gameObject.AddComponent<AudioSource>();
-        multiSound = (AudioClip)Resources.Load("trippleShot.wav");        
+        multiSound = (AudioClip)Resources.Load("trippleShot");        
     }
 	
 	// Update is called once per frame

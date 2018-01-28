@@ -27,7 +27,7 @@ public class RecallAbility : CooldownAbility {
         ghostObject = Instantiate(ghostPrefab, transform.position, transform.rotation);
 
         recallSource = (AudioSource)gameObject.AddComponent<AudioSource>();
-        recallSound = (AudioClip)Resources.Load("teleport.wav");
+        recallSound = (AudioClip)Resources.Load("teleport");
 
         ghostObject.GetComponent<SpriteRenderer>().sprite = GetComponent<SpriteRenderer>().sprite;
 
