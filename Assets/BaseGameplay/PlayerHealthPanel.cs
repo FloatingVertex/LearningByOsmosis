@@ -10,6 +10,9 @@ public class PlayerHealthPanel : MonoBehaviour {
 
     public Image[] imagesToRecolor;
 
+    public GameObject[] disableOnDeath;
+    public Image fadeOnDeath;
+
     private void Start()
     {
         if(PlayerHolderBehavior.singleton.Players.Count <= playerId)
@@ -27,6 +30,18 @@ public class PlayerHealthPanel : MonoBehaviour {
     // Update is called once per frame
     void Update () {
         var player = PlayerHolderBehavior.singleton.Players[playerId];
+        if(player.controller == null)
+        {
+            foreach(GameObject go in disableOnDeath)
+            {
+                go.SetActive(false);
+            }
+            var originalColor = fadeOnDeath.color;
+            originalColor.a = 0.5f;
+            fadeOnDeath.color = originalColor;
+            gameObject.SetActive(false);
+            return;
+        }
         for(int i = 0; i < player.activeEffects.Length; i++)
         {
             if (activatablePieces[i] == null || player == null || player.activeEffects == null)
