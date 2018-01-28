@@ -19,6 +19,8 @@ public class RigidbodyController : MonoBehaviour {
 
     public BookBehavior currentBook;
 
+    public Vector2 lastMoved;
+
     // Use this for initialization
     void Start()
     {
@@ -31,14 +33,18 @@ public class RigidbodyController : MonoBehaviour {
 
     private void FixedUpdate()
     {
+        if (((Vector2) player.Device.LeftStick).magnitude > 0)
+        {
+            lastMoved = player.Device.LeftStick;
+        }
         Move(player.Device.LeftStickX, player.Device.LeftStickY, Time.fixedDeltaTime, movementSpeed);
-		if (player.Device.RightTrigger.WasPressed && HasBook() && splitShotOff)
+		if ((player.Device.RightTrigger.WasPressed || player.Device.RightBumper.WasPressed) && HasBook() && splitShotOff)
         {
 			if (hold) {
-				currentBook.Throw (transform.position, true, player.Device.LeftStick);
+				currentBook.Throw (transform.position, true, lastMoved);
 			    hold = false;
 			} else {
-				currentBook.Throw (transform.position, false, player.Device.LeftStick);
+				currentBook.Throw (transform.position, false, lastMoved);
 			}
         }
     }
