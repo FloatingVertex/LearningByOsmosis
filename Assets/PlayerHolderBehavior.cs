@@ -10,6 +10,10 @@ public class PlayerHolderBehavior : MonoBehaviour
     public BookBehavior.KnowledgeType LastHit { get; private set; }
 
 	void Start () {
+        if(singleton != null)
+        {
+            Destroy(singleton);
+        }
         singleton = this;
 		DontDestroyOnLoad(gameObject);
 	}
