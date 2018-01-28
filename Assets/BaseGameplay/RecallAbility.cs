@@ -31,13 +31,12 @@ public class RecallAbility : CooldownAbility {
 
         ghostObject.GetComponent<SpriteRenderer>().sprite = GetComponent<SpriteRenderer>().sprite;
 
-<<<<<<< HEAD
-=======
+
         particles = Instantiate(ParticlePrefab, transform)
             .GetComponent<ParticleSystem>();
         particles.GetComponent<Renderer>().material.mainTexture =
             controller.playerSprites[(int) controller.player.PlayerColor].texture;
->>>>>>> 7c66c6a4de0a37ec4545f97bd979772768f46c1e
+
     }
 
     private void Update()
@@ -46,7 +45,7 @@ public class RecallAbility : CooldownAbility {
         //recall if button is pressed
         if (player.Device.Action3.WasPressed && TryToUseAbility())
         {
-<<<<<<< HEAD
+
             var positions = oldPositions.ToArray();
             bool abilityUsed = false;
             recallSource.PlayOneShot(recallSound);
@@ -68,9 +67,9 @@ public class RecallAbility : CooldownAbility {
             {
                 abilityAvalibleToUse = true;
             }
-=======
+
             StartCoroutine(GhostRecall());
->>>>>>> 7c66c6a4de0a37ec4545f97bd979772768f46c1e
+
         }
         if (oldPositions.Count > (tracebackTime / Time.fixedDeltaTime) / 2 && abilityAvalibleToUse)
         {
