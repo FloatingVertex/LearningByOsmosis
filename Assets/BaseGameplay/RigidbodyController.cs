@@ -33,6 +33,7 @@ public class RigidbodyController : MonoBehaviour {
 		splitShotOff = true;
 		repeatShot = false;
         GetComponent<SpriteRenderer>().sprite = playerSprites[(int)player.PlayerColor];
+        player.controller = this;
     }
 
     private void FixedUpdate()
