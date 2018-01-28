@@ -8,6 +8,7 @@ public class BookBehavior : MonoBehaviour
     public float ThrowSpeed;
     public float Gravity;
     public float InitialVerticalVelocity;
+    public float ThrowHeight;
     public Sprite[] BookSprites;
 
     public Texture[] ParticleTextures;
@@ -84,6 +85,10 @@ public class BookBehavior : MonoBehaviour
                         Explode();
                     }
                 }
+                else if (other.gameObject.name == "WallBottom")
+                {
+                    
+                }
                 else if(other.GetComponent<BookBehavior>() == null)
                 {
                     Explode();
@@ -126,7 +131,7 @@ public class BookBehavior : MonoBehaviour
             _throwDirection = directions[0].normalized;
             State = BookState.Thrown;
             GetComponent<CircleCollider2D>().enabled = true;
-            SetHeight(1);
+            SetHeight(ThrowHeight);
             _verticalVelocity = InitialVerticalVelocity;
             _heldBy.GetComponent<RigidbodyController>().LoseBook();
             for (int i = 1; i < directions.Length; i++)
@@ -135,7 +140,7 @@ public class BookBehavior : MonoBehaviour
                 extraThrownBookBehavior._throwDirection = directions[i].normalized;
                 extraThrownBookBehavior.State = BookState.Thrown;
                 extraThrownBookBehavior.GetComponent<CircleCollider2D>().enabled = true;
-                extraThrownBookBehavior.SetHeight(1);
+                extraThrownBookBehavior.SetHeight(ThrowHeight);
                 extraThrownBookBehavior._heldBy = _heldBy;
                 extraThrownBookBehavior._verticalVelocity = InitialVerticalVelocity;
                 extraThrownBookBehavior.Kind = Kind;
