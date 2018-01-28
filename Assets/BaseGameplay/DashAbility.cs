@@ -21,6 +21,7 @@ public class DashAbility : CooldownAbility
         player = controller.player;
         dashSource = (AudioSource)gameObject.AddComponent<AudioSource>();
         dashSound = (AudioClip)Resources.Load("dash");
+        base.Start();
     }
 
     private void Update()
