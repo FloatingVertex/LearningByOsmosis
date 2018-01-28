@@ -27,6 +27,7 @@ public class InvisibilityAbility : CooldownAbility
         InvisAudio = (AudioSource)gameObject.AddComponent<AudioSource>();
         InvisClipStart = (AudioClip)Resources.Load("invisibleIn");
         InvisClipEnd = (AudioClip)Resources.Load("InvisibleOut");
+        base.Start();
     }
 
     // Update is called once per frame

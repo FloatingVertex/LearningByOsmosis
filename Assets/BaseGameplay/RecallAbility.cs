@@ -36,6 +36,7 @@ public class RecallAbility : CooldownAbility {
             .GetComponent<ParticleSystem>();
         particles.GetComponent<Renderer>().material.mainTexture =
             controller.playerSprites[(int) controller.player.PlayerColor].texture;
+        base.Start();
 
     }
 

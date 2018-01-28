@@ -12,6 +12,14 @@ public class CooldownAbility : MonoBehaviour {
     public float abilityTimer = 0.0f;
     [HideInInspector]
     public bool abilityAvalibleToUse = true;
+    public AudioSource coolSource;
+    public AudioClip coolClip;
+
+    protected void Start()
+    {
+        coolSource = (AudioSource)gameObject.AddComponent<AudioSource>();
+        coolClip = (AudioClip)Resources.Load("cooldownover");
+    }
 
     protected bool TryToUseAbility()
     {
@@ -32,6 +40,7 @@ public class CooldownAbility : MonoBehaviour {
             {
                 abilityTimer = 0f;
                 abilityAvalibleToUse = true;
+                coolSource.PlayOneShot(coolClip);
             }
         }
     }

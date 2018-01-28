@@ -51,6 +51,7 @@ public class RigidbodyController : MonoBehaviour
         liftSound = (AudioClip)Resources.Load("bookPickup");
         hitSound = (AudioClip)Resources.Load("bookHit");
         deadSound = (AudioClip)Resources.Load("headexplode");
+        singleSource.volume = .8f;
     }
 
     private void FixedUpdate()
