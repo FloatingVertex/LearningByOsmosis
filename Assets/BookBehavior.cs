@@ -85,10 +85,6 @@ public class BookBehavior : MonoBehaviour
                         Explode();
                     }
                 }
-                else if (other.gameObject.name == "WallBottom")
-                {
-                    
-                }
                 else if(other.GetComponent<BookBehavior>() == null)
                 {
                     Explode();
@@ -156,7 +152,7 @@ public class BookBehavior : MonoBehaviour
     {
         transform.Find("shadow").gameObject.SetActive(height > 0);
         transform.Find("shadow").gameObject.transform.localPosition = new Vector3(-0.02f, -0.4f - 0.4f * height, 1.83f);
-        GetComponent<CircleCollider2D>().offset = new Vector2(0, -0.3f - 0.4f * height);
+        //GetComponent<CircleCollider2D>().offset = new Vector2(0, -0.3f - 0.4f * height);
         _height = height;
     }
 
