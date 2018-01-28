@@ -22,12 +22,12 @@ public class RecallAbility : CooldownAbility {
         controller = GetComponent<RigidbodyController>();
         player = controller.player;
         ghostObject = Instantiate(ghostPrefab, transform.position, transform.rotation);
-<<<<<<< HEAD
+
         recallSource = (AudioSource)gameObject.AddComponent<AudioSource>();
         recallSound = (AudioClip)Resources.Load("recallSound.mp3");
-=======
+
         ghostObject.GetComponent<SpriteRenderer>().sprite = GetComponent<SpriteRenderer>().sprite;
->>>>>>> 33a4898c91e043dc4c4c77a47a7c74c9cbe702ba
+
     }
 
     private void Update()
