@@ -27,6 +27,7 @@ public class RigidbodyController : MonoBehaviour
     public Player player;
 
     public Sprite[] playerSprites;
+    public Sprite[] playerRestingSprites;
 
     public float movementSpeed = 1f;
 
@@ -42,7 +43,7 @@ public class RigidbodyController : MonoBehaviour
 		activeEffects = new bool[6];
 		splitShotOff = true;
 		repeatShot = false;
-        GetComponent<SpriteRenderer>().sprite = playerSprites[(int)player.PlayerColor];
+        GetComponent<SpriteRenderer>().sprite = playerRestingSprites[(int)player.PlayerColor];
         player.controller = this;
         singleSource = (AudioSource)gameObject.AddComponent<AudioSource>();
         singleSound = (AudioClip)Resources.Load("singleShot.mp3");
@@ -107,6 +108,7 @@ public class RigidbodyController : MonoBehaviour
 		} else {			hold = false;
 		}
         // May want to move the book to the hand position, once we get art and know where that is
+        GetComponent<SpriteRenderer>().sprite = playerSprites[(int)player.PlayerColor];
     }
 
     public bool HasBeenHitBy(BookBehavior.KnowledgeType kind)
@@ -178,5 +180,6 @@ public class RigidbodyController : MonoBehaviour
     public void LoseBook()
     {
         currentBook = null;
+        GetComponent<SpriteRenderer>().sprite = playerRestingSprites[(int)player.PlayerColor];
     }
 }

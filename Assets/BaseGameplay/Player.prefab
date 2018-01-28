@@ -356,6 +356,11 @@ MonoBehaviour:
   - {fileID: 21300000, guid: d008b59c67eaf0147b8fd67ed400c859, type: 3}
   - {fileID: 21300000, guid: 01495eb17b2cec54387b62d2fb64729e, type: 3}
   - {fileID: 21300000, guid: f97c30b38d1cfc94dadcdd544dc2e00b, type: 3}
+  playerRestingSprites:
+  - {fileID: 21300000, guid: 0fe54e15e0973fa4796bc4116b1aa9ba, type: 3}
+  - {fileID: 21300000, guid: f4f5e29e243dc72419259b6aa70ee963, type: 3}
+  - {fileID: 21300000, guid: eb5659a0db6506c4b827ac5d070e3463, type: 3}
+  - {fileID: 21300000, guid: 1ebee470764d4e540a9b74287c74783f, type: 3}
   movementSpeed: 1000
   currentBook: {fileID: 0}
   lastMoved: {x: 0, y: 0}
