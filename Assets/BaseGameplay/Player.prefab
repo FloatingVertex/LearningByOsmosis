@@ -292,7 +292,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1166799856775902}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: d7e441e43bfdd0a4f8383e18c65a414d, type: 3}
   m_Name: 
@@ -301,6 +301,10 @@ MonoBehaviour:
   abilityTimer: 0
   abilityAvalibleToUse: 1
   invisLength: 1
+  VanishParticlePrefab: {fileID: 1887733980611532, guid: 915d5c5ee001a634ebc559143d09f649,
+    type: 2}
+  AppearParticlePrefab: {fileID: 1818895791676916, guid: 195ad6ab6e896224b899bc88ccede4f6,
+    type: 2}
 --- !u!114 &114467053612861856
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -316,6 +320,8 @@ MonoBehaviour:
   abilityTimer: 0
   abilityAvalibleToUse: 1
   dashForce: 20000
+  ParticlePrefab: {fileID: 1498390563655084, guid: f2ca9e2b50fd23d438185a3117760a7b,
+    type: 2}
 --- !u!114 &114581376585004552
 MonoBehaviour:
   m_ObjectHideFlags: 1
