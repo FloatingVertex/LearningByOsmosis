@@ -100,10 +100,14 @@ public class BookBehavior : MonoBehaviour
 
     private void Explode()
     {
-        GameObject particles = transform.Find("particles").gameObject;
-        particles.transform.parent = null;
-        particles.SetActive(true);
-        Destroy(gameObject);
+        Transform partT = transform.Find("particles");
+        if (partT != null)
+        {
+            GameObject particles = partT.gameObject;
+            particles.transform.parent = null;
+            particles.SetActive(true);
+            Destroy(gameObject);
+        }
     }
 
     public void Throw(Vector3 fromPosition, bool keep, params Vector3[] directions)
