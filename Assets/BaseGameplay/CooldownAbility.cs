@@ -8,8 +8,10 @@ using UnityEngine;
 public class CooldownAbility : MonoBehaviour {
 
     public float cooldown = 10f;
-    protected float abilityTimer = 0.0f;
-    protected bool abilityAvalibleToUse = true;
+    [HideInInspector]
+    public float abilityTimer = 0.0f;
+    [HideInInspector]
+    public bool abilityAvalibleToUse = true;
 
 
     protected bool TryToUseAbility()

@@ -21,6 +21,7 @@ namespace Assets
 
 		public bool[] activeEffects;
 
+        public RigidbodyController controller;
 
         public Player(InputDevice inputDevice, Color color,PlayerColor playerColor)
         {

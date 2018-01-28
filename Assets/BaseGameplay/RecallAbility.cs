@@ -23,6 +23,7 @@ public class RecallAbility : CooldownAbility {
         controller = GetComponent<RigidbodyController>();
         player = controller.player;
         ghostObject = Instantiate(ghostPrefab, transform.position, transform.rotation);
+        ghostObject.GetComponent<SpriteRenderer>().sprite = GetComponent<SpriteRenderer>().sprite;
 
         particles = Instantiate(ParticlePrefab, transform)
             .GetComponent<ParticleSystem>();
