@@ -9,6 +9,8 @@ public class RecallAbility : CooldownAbility {
     public float areaCheckRadius = 1.0f;
     public LayerMask areaCheckLayerMask;
     public GameObject ghostPrefab;
+    public AudioSource recallSource;
+    public AudioClip recallSound;
 
     protected Queue<Vector3> oldPositions = new Queue<Vector3>();
     protected RigidbodyController controller;
@@ -20,6 +22,8 @@ public class RecallAbility : CooldownAbility {
         controller = GetComponent<RigidbodyController>();
         player = controller.player;
         ghostObject = Instantiate(ghostPrefab, transform.position, transform.rotation);
+        recallSource = (AudioSource)gameObject.AddComponent<AudioSource>();
+        recallSound = (AudioClip)Resources.Load("recallSound.mp3");
     }
 
     private void Update()
@@ -30,6 +34,7 @@ public class RecallAbility : CooldownAbility {
         {
             var positions = oldPositions.ToArray();
             bool abilityUsed = false;
+            recallSource.PlayOneShot(recallSound);
             for(int i = 0; i < positions.Length; i++)
             {
                 var position = positions[i];
