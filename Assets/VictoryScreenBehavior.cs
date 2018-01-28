@@ -38,7 +38,7 @@ public class VictoryScreenBehavior : MonoBehaviour
         //TODO: Wait until the quote is done
 	    _countdownTimer -= Time.deltaTime;
 		if (!played && _countdownTimer < 20) {
-			int track = Random.Range (0, 6);
+			int track = Random.Range (0, 5);
 		    SetText(quoteCategory, track);
 			audioSource.PlayOneShot (clips [(int)quoteCategory * 5 + track]);
 			played = true;
