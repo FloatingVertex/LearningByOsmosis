@@ -29,6 +29,11 @@ public class AbilityCooldownUpdater : MonoBehaviour {
 
     private void Update()
     {
+        if(player.controller == null)
+        {
+            gameObject.SetActive(false);
+            return;
+        }
         var script = player.controller.GetComponent(type) as MonoBehaviour;
         sliderFill.gameObject.SetActive(script.enabled);
         if(script is CooldownAbility)
